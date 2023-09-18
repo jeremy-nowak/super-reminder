@@ -8,7 +8,7 @@
 <body>
 
 <input type="text" name="" id="">
-<input type="button" value="">
+<input type="button" value="Validate">
     
 </body>
 </html>
