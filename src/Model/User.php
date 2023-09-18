@@ -138,15 +138,7 @@ class User extends Database
             echo "loginnotOK";
             return "loginnotOK";
         }
-
     }
-
-    // public function logout(){
-    //     session_start();
-    //     session_destroy();
-    //     return "Logout";
-    //     echo "Logout";
-    // }
 }
   
 

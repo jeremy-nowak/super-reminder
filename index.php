@@ -1,7 +1,7 @@
 <?php
 require 'vendor/autoload.php';
 $router = new AltoRouter();
-$router->setBasePath('/module-connexionb2');
+$router->setBasePath('/super-reminder');
 use App\controller;
 use App\class;
 use App\model;
