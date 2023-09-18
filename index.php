@@ -8,6 +8,7 @@
 <body>
     <form>
         <input type="text" name="num1" placeholder="Number 1">
+        <input type="text">
     </form>
 </body>
 </html>
