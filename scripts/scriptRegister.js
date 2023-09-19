@@ -11,10 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let error_password = document.querySelector("#error_password");
     let password_conf = document.querySelector("#password_conf");
     let error_password_conf = document.querySelector("#error_password_conf");
-    let firstname = document.querySelector("#firstname");
-    let error_firstname = document.querySelector("#error_firstname");
-    let lastname = document.querySelector("#lastname");
-    let error_lastname = document.querySelector("#error_lastname");
     let error_login = document.querySelector("#error_login");
     let error_submit = document.querySelector("#error_submit");
 
@@ -76,19 +72,6 @@ console.log(data)
       
     }
 
-    function firstname_check(firstname) {
-      let firstnameValue = firstname.value;
-      error_firstname.innerHTML = "";
-
-      if (firstnameValue.trim() === "") {
-        firstname.style.backgroundColor = "red";
-        error_firstname.innerHTML = "You need to type your Firstname";
-      } else {
-        firstname.style.backgroundColor = "initial";
-        firstname.style.borderColor = "initial";
-      }
-    }
-
     function password_conf_check(password_conf) {
       let password_confValue = password_conf.value;
       error_password_conf.innerHTML = "";
@@ -99,19 +82,6 @@ console.log(data)
       } else {
         password_conf.style.backgroundColor = "initial";
         password_conf.style.borderColor = "initial";
-      }
-    }
-
-    function lastname_check(lastname) {
-      error_lastname.innerHTML = "";
-      let lastnameValue = lastname.value;
-
-      if (lastnameValue.trim() === "") {
-        lastname.style.backgroundColor = "red";
-        error_lastname.innerHTML = "You need to type your lastname";
-      } else {
-        lastname.style.backgroundColor = "initial";
-        lastname.style.borderColor = "initial";
       }
     }
 
@@ -175,18 +145,12 @@ console.log(data)
       e.preventDefault();
       password_check(password);
     });
-    firstname.addEventListener("blur", function (e) {
-      e.preventDefault();
-      firstname_check(firstname);
-    });
+
     password_conf.addEventListener("blur", function (e) {
       e.preventDefault();
       password_conf_check(password_conf);
     });
-    lastname.addEventListener("blur", function (e) {
-      e.preventDefault();
-      lastname_check(lastname);
-    });
+
     // ----------------------------------------------------------------------------------------------
     // --------------------------------addEventListener end------------------------------------------
     // ----------------------------------------------------------------------------------------------

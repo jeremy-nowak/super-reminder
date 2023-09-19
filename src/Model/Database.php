@@ -13,7 +13,7 @@ abstract class Database{
 
         
         $this->host = 'localhost';
-        $this->dbname = 'moduleconnexionb2';
+        $this->dbname = 'todoList';
         $this->dbUser = 'root';
         $this->dbPass = '';
 
@@ -27,11 +27,7 @@ abstract class Database{
         }
     }
 
-        
 
-        // $pdo = new PDO('mysql:host=localhost;dbname=moduleconnexionb2;charset=utf8', 'root', '');
-        // $this->bdd = $pdo;   
-        // return $this->bdd;
     }
 
 
