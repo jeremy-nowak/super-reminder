@@ -22,7 +22,7 @@ abstract class Database{
             $this->bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->bdd->exec("set names utf8");
         } catch (PDOException $e) {
-            echo "Erreur : " . $e->getMessage();
+            echo "Error : " . $e->getMessage();
             die();
         }
     }

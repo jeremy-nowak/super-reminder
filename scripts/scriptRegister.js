@@ -39,12 +39,11 @@ console.log(data)
 
       let result = (await response.text()).trim();
       console.log(result);
-      if (result === "existant") {
-        // if (response === "existant") {
+      if (result === "existing") {
         error_login.innerHTML = "Login unavailable";
         login.style.borderColor = "red";
         login.style.backgroundColor = "red";
-      } else if (result === "inexistant") {
+      } else if (result === "notexisting") {
         login.style.borderColor = "initial";
         login.style.backgroundColor = "initial";
         error_login.innerHTML = "";
@@ -109,13 +108,13 @@ console.log(data)
       
       let result = (await response.text()).trim();
       console.log(result)
-      if (result === "inexistantregisterOK") {
+      if (result === "notexistingregisterOK") {
         error_submit.innerHTML = "Congratulation you are registered !";
         setTimeout(() => {
           locationLogin();
         }, 2000);
 
-      } else if (result === "inexistantregisternotOK") {
+      } else if (result === "notexistingregisternotOK") {
         console.log("register fail");
 
         error_submit.innerHTML = "Register fail";

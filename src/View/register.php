@@ -11,7 +11,7 @@ require_once "header.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="scripts/scriptRegister.js"></script>
     
-    <title>Inscription</title>
+    <title>Register</title>
 </head>
 <body>    
     <form  method="post" id="register_form">
@@ -31,8 +31,6 @@ require_once "header.php";
         <input type="submit" value="Submit" id="submit_register">
         <p id="error_submit" ></p>
 
-
     </form>
-
 </body>
 </html>

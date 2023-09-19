@@ -9,12 +9,10 @@ class User extends Database
 
     // pro $bdd;
     private $login;
-    private $firstname;
-    private $lastname;
     private $password;
     private $id;
 
-    public function __construct($login = null, $firstname = null, $lastname = null)
+    public function __construct($login = null)
     {
 
         parent::__construct();
@@ -24,36 +22,16 @@ class User extends Database
         return $this->login;
     }
 
-    public function getFirstname()
-    {
-        return $this->firstname;
-    }
-
-    public function getLastname()
-    {
-        return $this->lastname;
-    }
-
     public function setLogin($login)
     {
         $this->login = $login;
     }
 
-    public function setFirstname($firstname)
-    {
-        $this->firstname = $firstname;
-    }
-
-    public function setLastname($lastname)
-    {
-        $this->lastname = $lastname;
-    }
     public function getId()
     {
         return $this->id;
     }
     
-
 
     public function checkLogin($login)
     {
@@ -64,11 +42,11 @@ class User extends Database
         $student = $statement->fetch(PDO::FETCH_ASSOC);
 
         if ($student) {
-            echo "existant";
-            return "existant";
+            echo "existing";
+            return "existing";
         } else {
-            echo "inexistant";
-            return "inexistant";
+            echo "notexisting";
+            return "notexisting";
         }
     }
     
@@ -99,8 +77,8 @@ class User extends Database
         $prepare = $this->bdd->prepare($sql);
         $prepare->execute([':login' => $login,':password' => $password, ':id' => $id]);
         if ($prepare) {
-            echo "update accomplished";
-            return "update accomplished";
+            echo "update success";
+            return "update success";
         }
         else{
             echo "update failed";
@@ -125,15 +103,14 @@ class User extends Database
                 echo "loginOK";
                 return "loginOK";
             } else {
-                echo "loginnotOK";
-                return "loginnotOK";
+                echo "loginFail";
+                return "loginFail";
             }
         } else {
-            echo "loginnotOK";
-            return "loginnotOK";
+            echo "loginFail";
+            return "loginFail";
         }
     }
 }
-  
 
 ?>
