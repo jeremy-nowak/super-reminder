@@ -113,7 +113,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 2000);
 
       } else if (result === "inexistantregisternotOK") {
-        console.log("register fail");
 
         error_submit.innerHTML = "Register fail";
       }
