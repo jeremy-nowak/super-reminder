@@ -12,7 +12,7 @@ abstract class Database{
     public function __construct(){
         
         $this->host = 'localhost';
-        $this->dbname = 'todoList';
+        $this->dbname = 'todolist';
         $this->dbUser = 'root';
         $this->dbPass = 'Phpcdlamerd*159753!';
 
