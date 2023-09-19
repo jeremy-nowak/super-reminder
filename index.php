@@ -15,6 +15,7 @@ $router->map( 'GET', '/', function(){
 
 $router->map( 'GET', '/login', function(){
     require_once "src/View/login.php";
+    require_once "src/View/login.php";
 }, "loginForm");
 
 $router->map( 'GET', '/register', function(){
