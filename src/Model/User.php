@@ -7,7 +7,6 @@ use App\Model\Database;
 class User extends Database
 {
 
-    // pro $bdd;
     private $login;
     private $password;
     private $id;
