@@ -45,25 +45,36 @@ $router->map('GET', '/logout', function () {
     $authController->logoutAuth();
 }, 'logout');
 
-
-
 $router->map( 'POST', '/login/loginValidate',function(){
 
     $authController = new AuthController();
     $authController->authLogin();
 },  "loginValidate");
 
-
-
 $router->map( 'POST', '/profile/updateProfile',function(){
     $authController = new AuthController();
     $authController->updateProfile();
 },  "updateProfile");
 
+$router->map( 'GET', '/myList',function(){
+    require_once "src/View/myList.php";
+}, "myList");
+
+$router->map( 'GET', '/myList/form',function(){
+    require_once "src/View/myList.php";
+}, "myListForm");
+
+$router->map( 'GET', '/myList/formTodo',function(){
+    require_once "src/View/myListFormTodo.php"; 
+}, "myListFormTodo");
+
+$router->map( 'GET', '/myList/formList',function(){
+    require_once "src/View/myListFormList.php";
+}, "myListFormList");
 
 
 
-
+    
 
 
 
