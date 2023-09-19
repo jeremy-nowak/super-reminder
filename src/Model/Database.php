@@ -14,7 +14,7 @@ abstract class Database{
         $this->host = 'localhost';
         $this->dbname = 'todolist';
         $this->dbUser = 'root';
-        $this->dbPass = 'Phpcdlamerd*159753!';
+        $this->dbPass = '';
 
         try {
             $this->bdd = new PDO("mysql:host=$this->host;dbname=$this->dbname;charset=utf8", $this->dbUser, $this->dbPass);

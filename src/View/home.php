@@ -4,8 +4,6 @@ if(!isset($_SESSION)){
 }
 
 require_once "header.php";
-if (isset($_SESSION['user'])) {
-    var_dump($_SESSION['user']);    }
 
 ?>
 <!DOCTYPE html>
@@ -19,14 +17,12 @@ if (isset($_SESSION['user'])) {
 </head>
 <body>
     <main class="home">
-        <?php if (!isset($_SESSION['login'])) { ?>
-            <h1>Welcome to the project</h1>
+        <?php if (!isset($_SESSION['user']['login'])) { ?>
+            <h1>Welcome to TodoList project</h1>
 
         <?php } else { ?>
-            <h1><?php echo 'Welcome back </br>' . $_SESSION['login'] ?></h1>
+            <h1><?php echo 'Welcome back&nbsp;' . $_SESSION['user']['login'] ?></h1>
         <?php } ?>
     </main>
-
-
 </body>
 </html>
