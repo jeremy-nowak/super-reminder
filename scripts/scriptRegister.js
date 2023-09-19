@@ -31,14 +31,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
       let data = new FormData(form_register);
       data.append("loginCheck", "ok");
-console.log(data)
       let response = await fetch("register/verifLog", {
         method: "POST",
         body: data,
       });
 
       let result = (await response.text()).trim();
-      console.log(result);
       if (result === "existant") {
         // if (response === "existant") {
         error_login.innerHTML = "Login unavailable";
@@ -108,7 +106,6 @@ console.log(data)
 // regler le probleme de la redirection ver ma page login
       
       let result = (await response.text()).trim();
-      console.log(result)
       if (result === "inexistantregisterOK") {
         error_submit.innerHTML = "Congratulation you are registered !";
         setTimeout(() => {
