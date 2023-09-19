@@ -14,15 +14,15 @@ $router->map( 'GET', '/', function(){
 });
 
 $router->map( 'GET', '/login', function(){
-    require_once "src/View/connexion.php";
+    require_once "src/View/login.php";
 }, "loginForm");
 
 $router->map( 'GET', '/register', function(){
-    require_once "src/View/inscription.php";
+    require_once "src/View/register.php";
 }, "registerForm");
 
-$router->map( 'GET', '/profil', function(){
-    require_once "src/View/profil.php";
+$router->map( 'GET', '/profile', function(){
+    require_once "src/View/profile.php";
 });
 
 $router->map( 'POST', '/register/verifLog', function(){
@@ -41,24 +41,24 @@ $router->map( 'POST', '/register/registerValidate', function(){
 }, "home");
 
 $router->map('GET', '/logout', function () {
-    $authControleur = new AuthController();
-    $authControleur->logoutAuth();
+    $authController = new AuthController();
+    $authController->logoutAuth();
 }, 'logout');
 
 
 
 $router->map( 'POST', '/login/loginValidate',function(){
 
-    $authControleur = new AuthController();
-    $authControleur->authLogin();
+    $authController = new AuthController();
+    $authController->authLogin();
 },  "loginValidate");
 
 
 
-$router->map( 'POST', '/profil/updateProfil',function(){
-    $authControleur = new AuthController();
-    $authControleur->updateProfil();
-},  "updateProfil");
+$router->map( 'POST', '/profile/updateProfile',function(){
+    $authController = new AuthController();
+    $authController->updateProfile();
+},  "updateProfile");
 
 
 

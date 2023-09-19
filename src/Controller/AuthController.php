@@ -7,12 +7,8 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-
-
 class AuthController
 {
-
-
 
     function checkLoginAuth($login)
     {
@@ -28,7 +24,7 @@ class AuthController
         $login = trim($_POST['login']);
         $password = trim($_POST['password']);
         $password_conf = trim($_POST['password_conf']);
-        if ($this->checkLoginAuth($login) === "inexistant") {
+        if ($this->checkLoginAuth($login) === "Don't exist") {
             if (
                 !empty($password) &&
                 !empty($password_conf) &&
@@ -52,13 +48,12 @@ class AuthController
                 }
             }
         } else {
-            echo "Pobleme de condition du register";
+            echo "Register failed";
         }
     }
 
     public function authLogin()
     {
-
 
         $login = trim($_POST['login']);
         $password = trim($_POST['password_login']);
@@ -68,7 +63,6 @@ class AuthController
     }
 
 
-
     public function logoutAuth()
     {
         session_destroy();
@@ -76,14 +70,13 @@ class AuthController
     }
 
 
-
     public function updateProfil()
     {
 
         $regexPassword = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/';
         $login = trim($_POST['login']);
-        $password = trim($_POST['password_profil']);
-        $password_conf = trim($_POST['password_profil_conf']);
+        $password = trim($_POST['password_profile']);
+        $password_conf = trim($_POST['password_profile_conf']);
         $id = trim($_SESSION["user"]['id']);
 
         if (
@@ -91,8 +84,6 @@ class AuthController
             !empty($password_conf) &&
             $password === $password_conf 
 
-            // &&
-            // preg_match($regexPassword, $password)
         ) {
             $password = trim($password);
             $password_conf = trim($password_conf);

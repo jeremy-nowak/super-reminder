@@ -16,18 +16,16 @@ if (!isset($_SESSION)) {
     <header id="header">
         <nav>
             <a href="./">Home</a>
-            <a href="./register">Inscription</a>
-            <a href="./login">Connexion</a>
+            <a href="./register">Register</a>
+            <a href="./login">Login</a>
             <?php
             if (isset($_SESSION["user"])) {
             ?>
-                <a href="./logout">Deconnexion</a>
-                <a href="./profil">Profil</a>
+                <a href="./logout">Logout</a>
+                <a href="./profile">Profile</a>
             <?php
             }
             ?>
-
-
 
         </nav>
     </header>

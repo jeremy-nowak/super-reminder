@@ -27,20 +27,14 @@ document.addEventListener("DOMContentLoaded", function () {
       let data = new FormData(form_register);
       data.append("loginCheck", "ok");
 
-      let response = await fetch("../controller/traitement.php", {
-        method: "POST",
-        body: data,
-      });
-
       let result = (await response.text()).trim();
       console.log(result);
 
-      if (result === "existant") {
-        // if (response === "existant") {
+      if (result === "existing") {
         error_login.innerHTML = "Login unavailable";
         login_login.style.borderColor = "red";
         login_login.style.backgroundColor = "red";
-      } else if (result === "inexistant") {
+      } else if (result === "notexisting") {
         login_login.style.borderColor = "initial";
         login_login.style.backgroundColor = "initial";
         error_login.innerHTML = "";
@@ -63,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         
       let data = new FormData(login_form);
-      data.append("login_formulaire", "ok");
+      data.append("login_form", "ok");
       let response = await fetch("login/loginValidate", {
         method: "POST",
         body: data
@@ -71,10 +65,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
       let result = (await response.text()).trim();
       if (result === "loginOK") {
-        error_form_login.innerHTML = "Login successfull"
+        error_form_login.innerHTML = "Login success"
         setTimeout( indexLocation, 2000)
         }
-      if (result === "loginnotOK") {
+      if (result === "loginFail") {
         error_form_login.innerHTML = "Login fail";
       }
     }

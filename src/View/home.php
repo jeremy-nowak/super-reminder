@@ -14,11 +14,11 @@ if (isset($_SESSION['user'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="scripts/scriptLogin.js"></script>
-    <title  >Module de connexion</title>
+    <title  >My ToDoList </title>
 </head>
 <body>
 
-<p><h1>Ceci est la page Home</h1></p>
+<p><h1>This is a home page</h1></p>
 
 </body>
 </html>
