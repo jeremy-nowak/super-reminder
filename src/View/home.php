@@ -17,13 +17,13 @@ require_once "header.php";
 </head>
 
 <body>
-    <main class="home">
+    <div class="home">
         <?php if (!isset($_SESSION['user']['login'])) { ?>
             <h1>Welcome to TodoList project</h1>
 
         <?php } else { ?>
             <h1><?php echo 'Welcome back&nbsp;' . $_SESSION['user']['login'] ?></h1>
         <?php } ?>
-    </main>
+    </div>
 </body>
 </html>

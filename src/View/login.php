@@ -15,18 +15,30 @@ require_once "header.php";
     <title>Login</title>
 </head>
 <body>
-    
-    <form  method="post" id="login_form">
+    <div class = "container">
+        <div class = "login-form">
+            <h1 class="title">Login</h1>
+            <form  method="post" id="login_form">
 
-        <label for="login">Login</label>
-        <input type="text" name="login" id="login_login">
+                <div class="field">
+                    <input type="text" placeholder="Username" name="login" id="login_login">
+                </div>
+                
+                <div class="field">
+                    <input type="password" placeholder="Password" name="password_login" id="password_login">
+                </div>
+                <div class="field btn">
+                    <input type="submit" value="Login" id="submit_login">
+                </div>
 
-        <label for="password">Password</label>
-        <input type="password" name="password_login" id="password_login">
+                <div class="signup-link">
+                    Not a member? <a href="register">Register</a>
+                </div>
 
-        <input type="submit" value="Submit" id="submit_login">
-        <p id="error_form_login" ></p>
+                <p id="error_form_login" ></p>
 
-    </form>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
