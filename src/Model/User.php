@@ -117,13 +117,11 @@ class User extends Database
         $statement->execute([':login' => $login]);
         $user = $statement->fetch(PDO::FETCH_ASSOC);
         
-        var_dump($user);
         if ($user) {
             if (password_verify($password, $user["password"])) {
 
                 $_SESSION["user"]["id_user"] = $user["id_user"];
                 $_SESSION["user"]["login"] = $user["login"];
-                    var_dump($_SESSION);
                 echo "loginOK";
                 return "loginOK";
             } else {
