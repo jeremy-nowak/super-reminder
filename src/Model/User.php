@@ -36,9 +36,9 @@ class User extends Database
     {
 
         $sql = "SELECT login FROM users WHERE login = :login";
-        $statement = $this->bdd->prepare($sql);
-        $statement->execute([':login' => $login]);
-        $student = $statement->fetch(PDO::FETCH_ASSOC);
+        $stmt = $this->bdd->prepare($sql);
+        $stmt->execute([':login' => $login]);
+        $student = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($student) {
             echo "existing";
@@ -90,9 +90,9 @@ class User extends Database
 
 
         $sql = "SELECT * FROM users WHERE login = :login";
-        $statement = $this->bdd->prepare($sql);
-        $statement->execute([':login' => $login]);
-        $user = $statement->fetch(PDO::FETCH_ASSOC);
+        $stmt = $this->bdd->prepare($sql);
+        $stmt->execute([':login' => $login]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
         
         if ($user) {
             if (password_verify($password, $user["password"])) {

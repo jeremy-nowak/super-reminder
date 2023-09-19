@@ -1,0 +1,113 @@
+@import "base.css";
+
+.slider-thumb::before {
+position: absolute;
+content: "";
+left: 31%;
+top: 20%;
+width: 700px;
+height: 500px;
+background: var(--color-bg);
+border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%;
+will-change: border-radius, transform, opacity;
+animation: sliderShape 5s linear infinite;
+display: block;
+z-index: -1;
+-webkit-animation: sliderShape 5s linear infinite;
+}
+
+@keyframes sliderShape{
+0%,100%{
+    border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+    transform: translate3d(0,0,0) rotateZ(0.01deg);
+}
+34%{
+    border-radius: 70% 30% 46% 54% / 30% 29% 71% 70%;
+    transform:  translate3d(0,5px,0) rotateZ(0.01deg);
+}
+50%{
+    transform: translate3d(0,0,0) rotateZ(0.01deg);
+}
+67%{
+    border-radius: 100% 60% 60% 100% / 100% 100% 60% 60% ;
+    transform: translate3d(0,-3px,0) rotateZ(0.01deg);
+}
+}
+
+ul {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    align-items: center;
+    background: transparent;
+    position: relative;
+    padding: 0 15px;
+}
+
+li {
+    position: relative;
+    margin: 20px;
+    height: 100%;
+    display: flex;
+}
+
+a {
+    z-index: 1;
+    color: var(--color-bg1);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+
+li:before {
+    content: "";
+    position: absolute;
+    height: 33.33%;
+    width: 0;
+    background-color: var(--color-light);
+    right: 0;
+    z-index: 0;
+    top: 33.33%;
+    transition: var(--transition);
+}
+
+li:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    background-color: var(--color-light);
+    left: 0;
+    z-index: 0;
+    bottom: 0;
+    transition: var(--transition);
+}
+
+a:before {
+    position:absolute;
+    content: "";
+    width: 0;
+    background-color: var(--color-light);
+    left: 0;
+    transition: var(--transition);
+}
+
+li:hover:before,
+li:hover:after,
+li:hover a:before{
+    width:100%
+}
+
+
+.top_nav {
+    background-color: var(--color-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+}
+
+.top_nav a {
+    color: var(--color-white);
+    font-weight: 500;
+    margin: 0 10px;
+}
