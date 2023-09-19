@@ -15,6 +15,7 @@ $router->map( 'GET', '/', function(){
 
 $router->map( 'GET', '/login', function(){
     require_once "src/View/login.php";
+    require_once "src/View/login.php";
 }, "loginForm");
 
 $router->map( 'GET', '/register', function(){
@@ -49,7 +50,11 @@ $router->map( 'POST', '/login/loginValidate',function(){
 
     $authController = new AuthController();
     $authController->authLogin();
+    $authController = new AuthController();
+    $authController->authLogin();
 },  "loginValidate");
+
+
 
 $router->map( 'POST', '/profile/updateProfile',function(){
     $authController = new AuthController();
