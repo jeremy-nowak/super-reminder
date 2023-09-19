@@ -37,7 +37,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       let result = (await response.text()).trim();
-
       console.log(result);
       if (result === "existing") {
         error_login.innerHTML = "Login unavailable";
@@ -107,7 +106,6 @@ document.addEventListener("DOMContentLoaded", function () {
 // regler le probleme de la redirection ver ma page login
       
       let result = (await response.text()).trim();
-
       console.log(result)
       if (result === "notexistingregisterOK") {
         error_submit.innerHTML = "Congratulation you are registered !";
