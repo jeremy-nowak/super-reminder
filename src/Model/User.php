@@ -58,7 +58,7 @@ class User extends Database
     public function checkLogin($login)
     {
 
-        $sql = "SELECT login FROM user WHERE login = :login";
+        $sql = "SELECT login FROM users WHERE login = :login";
         $statement = $this->bdd->prepare($sql);
         $statement->execute([':login' => $login]);
         $student = $statement->fetch(PDO::FETCH_ASSOC);
@@ -74,11 +74,11 @@ class User extends Database
     
 
 
-     public function register($login, $password, $lastname, $firstname )
+     public function register($login, $password)
     {
-                $sql = "INSERT INTO `user`(`login`, `firstname`, `lastname`, `password`) VALUES (:login,:firstname, :lastname, :password)";
+                $sql = "INSERT INTO `users`(`login`, `password`) VALUES (:login, :password)";
                 $prepare = $this->bdd->prepare($sql);
-                $prepare->execute([':login' => $login, ':firstname' => $firstname, ':lastname' => $lastname, ':password' => $password]);
+                $prepare->execute([':login' => $login, ':password' => $password]);
 
                 echo "registerOK";
                 return "registerOK";
@@ -88,18 +88,16 @@ class User extends Database
     
     
     
-     public function update($login, $firstname, $lastname, $password, $id){
+     public function update($login, $password, $id){
         $login = htmlspecialchars($login);
-        $firstname = htmlspecialchars($firstname);
-        $lastname = htmlspecialchars($lastname);
         $password = htmlspecialchars($password);
         $password = password_hash($password, PASSWORD_DEFAULT);
         
 
 
-        $sql = "UPDATE `user` SET `login`=:login,`firstname`=:firstname,`lastname`=:lastname, `password`=:password WHERE id = :id";
+        $sql = "UPDATE `users` SET `login`=:login, `password`=:password WHERE id_user = :id";
         $prepare = $this->bdd->prepare($sql);
-        $prepare->execute([':login' => $login, ':firstname' => $firstname, ':lastname' => $lastname, ':password' => $password, ':id' => $id]);
+        $prepare->execute([':login' => $login,':password' => $password, ':id' => $id]);
         if ($prepare) {
             echo "update accomplished";
             return "update accomplished";
@@ -114,20 +112,16 @@ class User extends Database
     public function login($login, $password){
 
 
-        $sql = "SELECT * FROM user WHERE login = :login";
+        $sql = "SELECT * FROM users WHERE login = :login";
         $statement = $this->bdd->prepare($sql);
         $statement->execute([':login' => $login]);
         $user = $statement->fetch(PDO::FETCH_ASSOC);
+        
         if ($user) {
-
             if (password_verify($password, $user["password"])) {
 
-                $_SESSION["user"]["id"] = $user["id"];
+                $_SESSION["user"]["id_user"] = $user["id_user"];
                 $_SESSION["user"]["login"] = $user["login"];
-                $_SESSION["user"]["firstname"] = $user["firstname"];
-                $_SESSION["user"]["lastname"] = $user["lastname"];
-
-                    
                 echo "loginOK";
                 return "loginOK";
             } else {
@@ -138,15 +132,7 @@ class User extends Database
             echo "loginnotOK";
             return "loginnotOK";
         }
-
     }
-
-    // public function logout(){
-    //     session_start();
-    //     session_destroy();
-    //     return "Logout";
-    //     echo "Logout";
-    // }
 }
   
 
