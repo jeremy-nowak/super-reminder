@@ -50,7 +50,11 @@ $router->map( 'POST', '/login/loginValidate',function(){
 
     $authController = new AuthController();
     $authController->authLogin();
+    $authController = new AuthController();
+    $authController->authLogin();
 },  "loginValidate");
+
+
 
 $router->map( 'POST', '/profile/updateProfile',function(){
     $authController = new AuthController();
