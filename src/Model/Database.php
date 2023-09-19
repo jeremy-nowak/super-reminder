@@ -10,7 +10,6 @@ abstract class Database{
     public $dbPass;
 
     public function __construct(){
-
         
         $this->host = 'localhost';
         $this->dbname = 'todoList';
@@ -26,11 +25,5 @@ abstract class Database{
             die();
         }
     }
-
-
     }
-
-
-
-
 ?>

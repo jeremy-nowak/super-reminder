@@ -7,26 +7,27 @@ if (!isset($_SESSION)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="./style/header.css">
     <script src="./scripts/scriptHeader.js"></script>
 </head>
 
 <body>
-
     <header id="header">
-        <nav>
-            <a href="./">Home</a>
-            <a href="./register">Register</a>
-            <a href="./login">Login</a>
-            <?php
-            if (isset($_SESSION["user"])) {
-            ?>
-                <a href="./logout">Logout</a>
-                <a href="./profile">Profile</a>
-            <?php
-            }
-            ?>
+        <nav class= "top_nav">
+            <ul>
+            <?php if (!isset($_SESSION['user'])) { ?>
+                <li><a href="./">Home</a></li>
+                <li><a href="./register">Register</a></li>
+                <li><a href="./login">Login</a></li>
 
+            <?php } else { ?>
+                <li><a href="./">Home</a></li>
+                <li><a href="./myList">My list</a></li>
+                <li><a href="./profile">Profile</a></li>
+                <li><a href="./logout">Logout</a></li>
+
+            <?php } ?>
+            </ul>
         </nav>
     </header>
 </body>
