@@ -10,7 +10,7 @@ require_once "header.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="scripts/scriptRegister.js"></script>
-    
+    <link rel="stylesheet" href="./style/register.css">
     <title>Register</title>
 </head>
 <body>    
@@ -30,7 +30,6 @@ require_once "header.php";
 
         <input type="submit" value="Submit" id="submit_register">
         <p id="error_submit" ></p>
-
     </form>
 </body>
 </html>

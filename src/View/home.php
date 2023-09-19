@@ -15,6 +15,7 @@ require_once "header.php";
     <script src="scripts/scriptLogin.js"></script>
     <title  >My ToDoList </title>
 </head>
+
 <body>
     <main class="home">
         <?php if (!isset($_SESSION['user']['login'])) { ?>

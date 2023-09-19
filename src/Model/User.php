@@ -13,7 +13,6 @@ class User extends Database
 
     public function __construct($login = null)
     {
-
         parent::__construct();
     }
     public function getLogin()
@@ -63,8 +62,6 @@ class User extends Database
         }
 
     
-    
-    
      public function update($login, $password, $id){
         $login = htmlspecialchars($login);
         $password = htmlspecialchars($password);
@@ -97,7 +94,7 @@ class User extends Database
         if ($user) {
             if (password_verify($password, $user["password"])) {
 
-                // $_SESSION["user"]["id_user"] = $user["id_user"];
+                $_SESSION["user"]["id_user"] = $user["id_user"];
                 $_SESSION["user"]["login"] = $user["login"];
                 echo "loginOK";
                 return "loginOK";
