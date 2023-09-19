@@ -70,7 +70,7 @@ class AuthController
     }
 
 
-    public function updateProfil()
+    public function updateProfile()
     {
 
         $regexPassword = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/';
