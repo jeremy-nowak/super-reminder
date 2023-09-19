@@ -1,7 +1,7 @@
 <?php
 require 'vendor/autoload.php';
 $router = new AltoRouter();
-$router->setBasePath('/module-connexionb2');
+$router->setBasePath('/super-reminder');
 use App\controller;
 use App\class;
 use App\model;
@@ -35,10 +35,8 @@ $router->map( 'POST', '/register/registerValidate', function(){
     $authModel = new AuthController();
     $login = $_POST["login"];
     $password = $_POST["password"];
-    $lastname = $_POST["lastname"];
-    $firstname = $_POST["firstname"];
 
-    $authModel->register($login, $password, $lastname, $firstname );
+    $authModel->register($login, $password);
 
 }, "home");
 

@@ -87,12 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // --------------------------------addEventListener login start----------------------------------
     // ----------------------------------------------------------------------------------------------
 
-    // submit_login.addEventListener("submit", function (e) {
-    //   e.preventDefault();
-    //   // login(login_form);
 
-    //   console.log("cabuuuug")
-    // });
     login_form.addEventListener("submit", function (e) {
       e.preventDefault();
     

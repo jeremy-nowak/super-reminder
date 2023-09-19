@@ -28,14 +28,6 @@ require_once "header.php";
         <input type="password" name="password_conf" id="password_conf"><br>
         <p id="error_password_conf"></p>
 
-        <label for="firstname">firstname:</label>
-        <input type="firstname" name="firstname" id="firstname"><br>
-        <p id="error_firstname" ></p>
-        
-        <label for="lastname">lastname:</label>
-        <input type="lastname" name="lastname" id="lastname"><br>
-        <p id="error_lastname"></p>
-
         <input type="submit" value="Submit" id="submit_register">
         <p id="error_submit" ></p>
 
