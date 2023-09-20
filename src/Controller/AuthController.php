@@ -25,6 +25,7 @@ class AuthController
         $password = trim($_POST['password']);
         $password_conf = trim($_POST['password_conf']);
         if ($this->checkLoginAuth($login) === "notexisting") {
+
             if (
                 !empty($password) &&
                 !empty($password_conf) &&
@@ -50,6 +51,32 @@ class AuthController
         } else {
             echo "Register failed";
         }
+    }
+
+    public function registerListAndTask($userId, $listName,$todo, $state){
+
+        $userId = htmlspecialchars($userId);
+        $listName = htmlspecialchars($listName);
+        $userId = trim($userId);
+        $listName = trim($listName);
+
+
+        if(isset($_SESSION) && $this->checkIdUser($userId) === "existing"){
+
+            $user = new User();
+            $user->registerListBdd($listName, $userId,$todo, $state);
+
+        }
+
+
+
+
+
+
+    }
+
+    public function checkIdUser(){
+        // Créer cette fonction
     }
 
     public function authLogin()
