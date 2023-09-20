@@ -9,7 +9,7 @@
     overflow: hidden;
 }
 
-.login-form {
+.profile-form {
     width: 100%;
     max-width: 400px;
     padding: 40px;
@@ -19,19 +19,19 @@
     box-shadow: 10px 10px var(--color-bg);
 }
 
-.login-form .title {
+.profile-form .title {
     text-align: center;
     margin-bottom: 20px;
     color: var(--color-bg);
 }
 
-.login-form .field {
+.profile-form .field {
     height: 40px;
     width: 100%;
     margin-top: 30px;
 }
 
-.login-form .field input {
+.profile-form .field input {
     height: 100%;
     width: 100%;
     outline: none;
@@ -45,14 +45,14 @@
     background: var(--color-bg);
 }
 
-.login-form .field input:focus {
+.profile-form .field input:focus {
     border-color: var(--color-light);
 }
 
-.login-form .field.btn input[type="submit"] {
+.profile-form .field.btn input[type="submit"] {
     font-weight: 600;
     padding-right: 25px;
-    margin-top: 10px;
+    margin-top: 15px;
     border: transparent;
     background-color: var(--color-white);
     border: 2px solid var(--color-black);
@@ -61,24 +61,24 @@
     transition: var(--transition);
 }
 
-.login-form .field.btn input[type="submit"]:hover {
+.profile-form .field.btn input[type="submit"]:hover {
     background-color: var(--color-light1);
     transition: var(--transition);
 }
 
-.login-form label {
+.profile-form label {
     font-size: 17px;
     font-weight: 500;
     color: var(--color-bg);
     margin-left: 5px;
 }
 
-.login-form label:hover {
+.profile-form label:hover {
     color: var(--color-light);
     transition: var(--transition);
 }
 
-.login-form .signup-link {
+.profile-form .signup-link {
     text-align: center;
     margin-top: 25px;
     font-size: 18px;
@@ -86,12 +86,12 @@
     color:var(--color-bg1)
 }
 
-.login-form .signup-link a {
+.profile-form .signup-link a {
     color: var(--color-black);
     text-decoration: none;
 }
 
-.login-form .signup-link a:hover {
+.profile-form .signup-link a:hover {
     text-decoration: underline;
     color: var(--color-light);
     transition: var(--transition);
@@ -101,11 +101,11 @@
     color: red;
     font-size: 18px;
     font-weight: 500;
-    margin-top: 15px;
+    padding-top: 5px;
     text-align: center;
 }
 
-.success_msg {
+.success_msg{
     color: green;
     font-size: 18px;
     font-weight: 500;

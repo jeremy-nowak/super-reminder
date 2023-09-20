@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", function () {
     let password_profile_conf = document.querySelector('#password_profile_conf');
     let error_password = document.querySelector('#error_password');
     let error_password_conf = document.querySelector('#error_password_conf')
+    let success_form_profile = document.querySelector("#success_form_profile");
+    let error_form_profile = document.querySelector("#error_form_profile");
 
     let submit_profile = document.querySelector("#submit_profile");
 
@@ -20,8 +22,8 @@ document.addEventListener("DOMContentLoaded", function () {
           login_profile.style.backgroundColor = "red";
           login_profile.style.borderColor = "red";
         } else {
-          login_profile.style.backgroundColor = "initial";
-          login_profile.style.borderColor = "initial";
+          login_profile.style.backgroundColor = "#222823";
+          login_profile.style.borderColor = "#222823";
         }
   
         let data = new FormData(login_form);
@@ -39,8 +41,8 @@ document.addEventListener("DOMContentLoaded", function () {
           login_profile.style.borderColor = "red";
           login_profile.style.backgroundColor = "red";
         } else if (result === "notexisting") {
-          login_profile.style.borderColor = "initial";
-          login_profile.style.backgroundColor = "initial";
+          login_profile.style.borderColor = "#222823";
+          login_profile.style.backgroundColor = "#222823";
           error_profile.innerHTML = "";
         }
       }
@@ -54,8 +56,8 @@ document.addEventListener("DOMContentLoaded", function () {
           password_profile_conf.style.borderColor = "red";
         }
         else{
-          password_profile_conf.style.backgroundColor = "initial";
-          password_profile_conf.style.borderColor = "initial";
+          password_profile_conf.style.backgroundColor = "#222823";
+          password_profile_conf.style.borderColor = "#222823";
         }
       }
 
@@ -72,17 +74,22 @@ document.addEventListener("DOMContentLoaded", function () {
             error_password.innerHTML = "You need to type a password";
           }
           else{
-            password_profile.style.backgroundColor = "initial";
-            password_profile.style.borderColor = "initial"; 
+            password_profile.style.backgroundColor = "#222823";
+            password_profile.style.borderColor = "#222823"; 
             if(regexPassword.test(passwordValue)){
-              password_profile.style.backgroundColor = "initial";
-              password_profile.style.borderColor = "initial";
+              password_profile.style.backgroundColor = "#222823";
+              password_profile.style.borderColor = "#222823";
             } 
             else{
               error_password.innerHTML = "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character:"
             }
           }
       }
+
+      function indexLocation(){
+        window.location = "./"
+      }
+
       async function update(login_form){
         let data = new FormData(login_form);
         data.append("update", "ok");
@@ -94,11 +101,12 @@ document.addEventListener("DOMContentLoaded", function () {
   
         let result = (await response.text()).trim();
         console.log(result);
-        if (result === "update accomplished") {
-          setTimeout( result, 2000)
-
-          
-          
+        if (result === "update success") {
+          success_form_profile.innerHTML = "Update success";
+          setTimeout( indexLocation, 2000)
+        }
+        if (result === "update failed") {
+          error_form_profile.innerHTML = "Update failed";
         }
       }
 
