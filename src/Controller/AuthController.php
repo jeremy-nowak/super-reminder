@@ -53,18 +53,22 @@ class AuthController
         }
     }
 
-    public function registerListAndTask($userId, $listName,$todo, $state){
+    public function registerListAndTask($userId, $listName, $todo, $priority){
 
         $userId = htmlspecialchars($userId);
         $listName = htmlspecialchars($listName);
-        $userId = trim($userId);
+        $priority = htmlspecialchars($priority);
+
+        $userId = trim($userId);    
         $listName = trim($listName);
+        $priority = trim($priority);
+
 
 
         if(isset($_SESSION) && $this->checkIdUser($userId) === "existing"){
 
             $user = new User();
-            $user->registerListBdd($listName, $userId,$todo, $state);
+            $user->registerListBdd($listName, $userId,$todo);
 
         }
 
@@ -99,6 +103,7 @@ class AuthController
         $login = trim($_POST['login']);
         $password = trim($_POST['password_profile']);
         $password_conf = trim($_POST['password_profile_conf']);
+
         $id = trim($_SESSION["user"]['id_user']);
 
         if (

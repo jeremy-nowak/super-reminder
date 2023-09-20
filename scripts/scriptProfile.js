@@ -100,6 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
   
         let result = (await response.text()).trim();
+
         console.log(result);
         if (result === "update success") {
           success_form_profile.innerHTML = "Update success";

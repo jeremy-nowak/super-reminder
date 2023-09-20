@@ -1,5 +1,6 @@
 <?php
 require 'vendor/autoload.php';
+session_start();
 $router = new AltoRouter();
 $router->setBasePath('/super-reminder');
 use App\controller;
@@ -66,13 +67,16 @@ $router->map( 'GET', '/myList',function(){
 $router->map('POST', '/myList/registerTask', function(){
     
     $userId = $_SESSION['user']["id_user"];
-    $listName = $_POST["task_list_value"];
+    $listName = $_POST["inputTodo"];
+    $priority = $_POST["todoSelect"];
     $todo = "";
-    $state = "";
+    var_dump($_POST["inputTodo"], $_POST["todoSelect"]);
+    var_dump($_SESSION);
 
 
     $authController = new AuthController();
-    $authController->registerListAndTask($userId, $listName, $todo, $state );
+    $authController->registerListAndTask($userId, $listName, $todo, $priority );
+    
 }, "registerMyList" );
 
 // $router->map( 'GET', '/myList/form',function(){
