@@ -72,11 +72,6 @@ class AuthController
 
         }
 
-
-
-
-
-
     }
 
     public function checkIdUser(){
@@ -108,7 +103,9 @@ class AuthController
         $login = trim($_POST['login']);
         $password = trim($_POST['password_profile']);
         $password_conf = trim($_POST['password_profile_conf']);
-        $id = trim($_SESSION["user"]['id']);
+
+        $id = trim($_SESSION["user"]['id_user']);
+
         if (
             !empty($password) &&
             !empty($password_conf) &&

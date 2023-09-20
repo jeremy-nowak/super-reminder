@@ -1,0 +1,128 @@
+@import "base.css";
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.register-form {
+    width: 100%;
+    max-width: 400px;
+    padding: 40px;
+    background-color: var(--color-white);
+    border-radius: 10px;
+    border: 2px solid var(--color-black);
+    box-shadow: 10px 10px var(--color-bg);
+}
+
+.register-form .title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--color-bg);
+}
+
+.register-form .field {
+    height: 40px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.register-form .field input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    padding-left: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    border: 2px solid var(--color-black);
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--color-white);
+    background: var(--color-bg);
+}
+
+.register-form .field input:focus {
+    border-color: var(--color-light);
+}
+
+.register-form .field.btn input[type="submit"] {
+    font-weight: 600;
+    padding-right: 25px;
+    border: transparent;
+    background-color: var(--color-white);
+    border: 2px solid var(--color-black);
+    color: var(--color-bg);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.register-form .field.btn input[type="submit"]:hover {
+    background-color: var(--color-light1);
+    transition: var(--transition);
+}
+
+.register-form label {
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--color-bg);
+    margin-left: 5px;
+}
+
+.register-form label:hover {
+    color: var(--color-light);
+    transition: var(--transition);
+}
+
+.register-form .checkbox {
+    margin-top: 25px;
+    margin-left: 2px;
+    color: var(--color-bg);
+    font-weight: 500;
+    font-size: 17px;
+}
+
+.register-form .checkbox label input {
+    accent-color: var(--color-light);
+    margin-right: 0.2rem;
+}
+
+.register-form .checkbox label:hover {
+    text-decoration: underline;
+    color: var(--color-light);
+    transition: var(--transition);
+}
+
+.register-form .signup-link {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 18px;
+    font-weight: 500;
+    color:var(--color-bg1)
+}
+
+.register-form .signup-link a {
+    color: var(--color-black);
+    text-decoration: none;
+}
+
+.register-form .signup-link a:hover {
+    text-decoration: underline;
+    color: var(--color-light);
+    transition: var(--transition);
+}
+
+.error_msg {
+    color: red;
+    font-size: 17px;
+    font-weight: 500;
+    margin-top: 15px;
+    text-align: center;
+}
+
+
+

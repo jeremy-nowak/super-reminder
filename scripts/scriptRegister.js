@@ -25,16 +25,8 @@ document.addEventListener("DOMContentLoaded", function () {
         login.style.backgroundColor = "red";
         login.style.borderColor = "red";
       } else {
-        login.style.backgroundColor = "initial";
-        login.style.borderColor = "initial";
-      }
-
-      let data = new FormData(form_register);
-      data.append("loginCheck", "ok");
-      let response = await fetch("register/verifLog", {
-        method: "POST",
-        body: data,
-      });
+        login.style.backgroundColor = "#222823";
+        login.style.borderColor = "#222823";
 
       let result = (await response.text()).trim();
       console.log(result);
@@ -43,10 +35,18 @@ document.addEventListener("DOMContentLoaded", function () {
         login.style.borderColor = "red";
         login.style.backgroundColor = "red";
       } else if (result === "notexisting") {
-        login.style.borderColor = "initial";
-        login.style.backgroundColor = "initial";
+        login.style.borderColor = "#222823";
+        login.style.backgroundColor = "#222823";
         error_login.innerHTML = "";
-      }
+      }}
+
+      let data = new FormData(form_register);
+      data.append("loginCheck", "ok");
+      let response = await fetch("register/verifLog", {
+        method: "POST",
+        body: data,
+      });
+
     }
 
     function password_check(password) {
@@ -61,11 +61,11 @@ document.addEventListener("DOMContentLoaded", function () {
           error_password.innerHTML = "You need to type a password";
         }
         else if(regexPassword.test(passwordValue)){
-          password.style.backgroundColor = "initial";
-          password.style.borderColor = "initial";
+          password.style.backgroundColor = "#222823";
+          password.style.borderColor = "#222823";
         } 
         else{
-          error_password.innerHTML = "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character:"
+          error_password.innerHTML = "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character"
         }
       
     }
@@ -78,8 +78,8 @@ document.addEventListener("DOMContentLoaded", function () {
         password_conf.style.backgroundColor = "red";
         error_password_conf.innerHTML = "You need to type a password";
       } else {
-        password_conf.style.backgroundColor = "initial";
-        password_conf.style.borderColor = "initial";
+        password_conf.style.backgroundColor = "#222823";
+        password_conf.style.borderColor = "#222823";
       }
     }
 

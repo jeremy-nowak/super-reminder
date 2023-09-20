@@ -13,7 +13,6 @@ class User extends Database
 
     public function __construct($login = null)
     {
-
         parent::__construct();
     }
     public function getLogin()
@@ -62,13 +61,12 @@ class User extends Database
                 $prepare = $this->bdd->prepare($sql);
                 $prepare->execute([':login' => $login, ':password' => $password]);
 
+                
                 echo "registerOK";
                 return "registerOK";
 
         }
 
-    
-    
     
      public function update($login, $password, $id){
         $login = htmlspecialchars($login);
