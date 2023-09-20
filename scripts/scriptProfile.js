@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let data = new FormData(login_form);
         data.append("update", "ok");
   
-        let response = await fetch("profil/updateProfile", {
+        let response = await fetch("profile/updateProfile", {
           method: "POST",
           body: data,
         });

@@ -10,27 +10,44 @@ require_once "header.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="scripts/scriptRegister.js"></script>
-    
+    <link rel="stylesheet" href="./style/register.css">
     <title>Register</title>
 </head>
-<body>    
-    <form  method="post" id="register_form">
+<body>  
+    <div class="container">
+        <div class="register-form">
+            <h1 class="title">Register</h1>
+            <form  method="post" id="register_form">
 
-        <label for="login">Login:</label>
-        <input type="text" name="login" id="login">
-        <p id="error_login"></p>
+                <div class="field">
+                    <input type="text" placeholder="Username" name="login" id="login">
+                </div>
 
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password"><br>
-        <p id="error_password"></p>
+                <div class="field">
+                    <input type="password" placeholder="Password" name="password" id="password">
+                </div>
 
-        <label for="password_conf">Password confirmation:</label>
-        <input type="password" name="password_conf" id="password_conf"><br>
-        <p id="error_password_conf"></p>
+                <div class="field">
+                    <input type="password" placeholder="Confirm password" name="password_conf" id="password_conf">
+                </div>                
 
-        <input type="submit" value="Submit" id="submit_register">
-        <p id="error_submit" ></p>
+                <div class="field btn">
+                    <input type="submit" value="Submit" id="submit_register">
+                </div>
 
-    </form>
+                <div class="checkbox">
+                    <label><input type="checkbox" required>
+                    I agree to the terms & conditions</label>
+                </div>
+
+                <div class="error_msg">
+                    <p id="error_login"></p>
+                    <p id="error_password"></p>
+                    <p id="error_password_conf"></p>
+                    <p id="error_submit" ></p>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
