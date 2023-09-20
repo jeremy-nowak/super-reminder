@@ -25,6 +25,7 @@ class AuthController
         $password = trim($_POST['password']);
         $password_conf = trim($_POST['password_conf']);
         if ($this->checkLoginAuth($login) === "notexisting") {
+
             if (
                 !empty($password) &&
                 !empty($password_conf) &&
@@ -64,6 +65,7 @@ class AuthController
 
             $user = new User();
             $user->registerListBdd($listName, $userId,$todo, $state);
+
         }
 
 

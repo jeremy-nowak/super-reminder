@@ -49,6 +49,7 @@ $router->map( 'POST', '/login/loginValidate',function(){
 
     $authController = new AuthController();
     $authController->authLogin();
+
 },  "loginValidate");
 
 
@@ -84,6 +85,7 @@ $router->map('POST', '/myList/registerList', function(){
 // $router->map( 'GET', '/myList/formList',function(){
 //     require_once "src/View/myListFormList.php";
 // }, "myListFormList");
+
 
 
 

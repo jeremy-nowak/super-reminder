@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // --------------------------v1-----------------
     //  function addTitleAndTask() {
+
     //     let task_list_value = task_list.value.trim();
     //     console.log(task_list_value)
     //     let titleDiv = document.createElement("div");
@@ -45,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     function addTitleAndTask() {
+
         let task_list_value = task_list.value.trim();
         console.log(task_list_value);
         let titleDiv = document.createElement("div");
@@ -55,6 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let registerTaskBtn = document.createElement("button");
         registerTaskBtn.textContent = "Register Task";
         registerTaskBtn.id = "registerTaskBtn"; 
+
 
       
         let inputTodo = document.createElement("input");
@@ -76,6 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
         titleDiv.appendChild(titleP);
         titleDiv.appendChild(inputTodo);
         
+
         titleDiv.appendChild(todoSelect);
       
         let doneCheckbox = document.createElement("input");
@@ -107,6 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // const promise = await fetch()
 
       }
+
 
 
     
@@ -154,6 +159,7 @@ myList_form_title.addEventListener('submit', function(e){
     e.preventDefault();
 
 addTitleAndTask()
+
 
 })
 
