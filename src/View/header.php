@@ -13,6 +13,7 @@ if (!isset($_SESSION)) {
 
 <body>
     <header id="header">
+
         <nav class= "top_nav">
             <ul>
             <?php if (!isset($_SESSION['user'])) { ?>

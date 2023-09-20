@@ -27,6 +27,8 @@ if (isset($_SESSION['user'])) {
         <?php } ?>
     </main>
 
+<p><h1>This is a home page</h1></p>
+
 
 </body>
 </html>
