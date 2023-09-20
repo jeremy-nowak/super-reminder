@@ -26,6 +26,7 @@ if (!isset($_SESSION)) {
                 <li><a href="./myList">My list</a></li>
                 <li><a href="./profile">Profile</a></li>
                 <li><a href="./logout">Logout</a></li>
+                <li><a href="./myList">Create task</a></li>
 
             <?php } ?>
             </ul>
