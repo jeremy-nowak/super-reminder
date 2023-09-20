@@ -61,6 +61,7 @@ class User extends Database
                 $prepare = $this->bdd->prepare($sql);
                 $prepare->execute([':login' => $login, ':password' => $password]);
 
+                
                 echo "registerOK";
                 return "registerOK";
 
