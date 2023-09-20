@@ -52,6 +52,31 @@ class AuthController
         }
     }
 
+    public function registerListAndTask($userId, $listName,$todo, $state){
+
+        $userId = htmlspecialchars($userId);
+        $listName = htmlspecialchars($listName);
+        $userId = trim($userId);
+        $listName = trim($listName);
+
+
+        if(isset($_SESSION) && $this->checkIdUser($userId) === "existing"){
+
+            $user = new User();
+            $user->registerListBdd($listName, $userId,$todo, $state);
+        }
+
+
+
+
+
+
+    }
+
+    public function checkIdUser(){
+        // Créer cette fonction
+    }
+
     public function authLogin()
     {
 

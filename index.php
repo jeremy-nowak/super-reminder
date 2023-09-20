@@ -62,17 +62,28 @@ $router->map( 'GET', '/myList',function(){
     require_once "src/View/myList.php";
 }, "myList");
 
-$router->map( 'GET', '/myList/form',function(){
-    require_once "src/View/myList.php";
-}, "myListForm");
+$router->map('POST', '/myList/registerList', function(){
+    $userId = $_SESSION['user']["id_user"];
+    $listName = $_POST["task_list_value"];
+    $todo = "";
+    $state = "";
 
-$router->map( 'GET', '/myList/formTodo',function(){
-    require_once "src/View/myListFormTodo.php"; 
-}, "myListFormTodo");
 
-$router->map( 'GET', '/myList/formList',function(){
-    require_once "src/View/myListFormList.php";
-}, "myListFormList");
+    $authController = new AuthController();
+    $authController->registerListAndTask($userId, $listName, $todo, $state );
+}, "registerMyList" );
+
+// $router->map( 'GET', '/myList/form',function(){
+//     require_once "src/View/myList.php";
+// }, "myListForm");
+
+// $router->map( 'GET', '/myList/formTodo',function(){
+//     require_once "src/View/myListFormTodo.php"; 
+// }, "myListFormTodo");
+
+// $router->map( 'GET', '/myList/formList',function(){
+//     require_once "src/View/myListFormList.php";
+// }, "myListFormList");
 
 
 

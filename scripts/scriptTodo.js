@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // --------------------------v1-----------------
-    //  function addTitle() {
+    //  function addTitleAndTask() {
     //     let task_list_value = task_list.value.trim();
     //     console.log(task_list_value)
     //     let titleDiv = document.createElement("div");
@@ -44,13 +44,18 @@ document.addEventListener("DOMContentLoaded", function () {
     // --------------------------------v1 fin-------------------------------
 
 
-    function addTitle() {
+    function addTitleAndTask() {
         let task_list_value = task_list.value.trim();
         console.log(task_list_value);
         let titleDiv = document.createElement("div");
         let titleP = document.createElement("p");
         titleP.innerHTML = task_list_value;
         titleDiv.appendChild(titleP);
+
+        let registerTaskBtn = document.createElement("button");
+        registerTaskBtn.textContent = "Register Task";
+        registerTaskBtn.id = "registerTaskBtn"; 
+
       
         let inputTodo = document.createElement("input");
         let todoSelect = document.createElement("select");
@@ -70,6 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
       
         titleDiv.appendChild(titleP);
         titleDiv.appendChild(inputTodo);
+        
         titleDiv.appendChild(todoSelect);
       
         let doneCheckbox = document.createElement("input");
@@ -93,9 +99,16 @@ document.addEventListener("DOMContentLoaded", function () {
         titleDiv.appendChild(addButton);
       
         displayFormTodo.appendChild(titleDiv);
-        task_list.innerHTML = "";
+        titleDiv.appendChild(registerTaskBtn);
+
+        task_list.value = "";
+
+        // let data = new FormData(titleDiv)
+        // const promise = await fetch()
+
       }
-      
+
+
     
     function displayTodoList(){
         
@@ -140,7 +153,7 @@ document.addEventListener("DOMContentLoaded", function () {
 myList_form_title.addEventListener('submit', function(e){
     e.preventDefault();
 
-addTitle()
+addTitleAndTask()
 
 })
 
