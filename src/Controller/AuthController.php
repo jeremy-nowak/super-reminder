@@ -24,7 +24,7 @@ class AuthController
         $login = trim($_POST['login']);
         $password = trim($_POST['password']);
         $password_conf = trim($_POST['password_conf']);
-        if ($this->checkLoginAuth($login) === "Don't exist") {
+        if ($this->checkLoginAuth($login) === "notexisting") {
             if (
                 !empty($password) &&
                 !empty($password_conf) &&
