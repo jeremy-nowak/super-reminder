@@ -8,7 +8,7 @@ require_once "header.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="scripts/scriptTodo.js"></script>
+    <script defer src="scripts/scriptTodo.js"></script>
     <title>myList</title>
 </head>
 

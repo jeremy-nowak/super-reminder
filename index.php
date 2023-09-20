@@ -63,7 +63,8 @@ $router->map( 'GET', '/myList',function(){
     require_once "src/View/myList.php";
 }, "myList");
 
-$router->map('POST', '/myList/registerList', function(){
+$router->map('POST', '/myList/registerTask', function(){
+    
     $userId = $_SESSION['user']["id_user"];
     $listName = $_POST["task_list_value"];
     $todo = "";
