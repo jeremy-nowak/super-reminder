@@ -130,16 +130,14 @@ document.addEventListener("DOMContentLoaded", function () {
         e.preventDefault();
      
         let data  = new FormData(formTask);
-        const response = await fetch("/myList/registerTask",{
+        const response = await fetch("myList/registerTask",{
             method: "POST",
             body: data,
         });
 
         const result = await response.text()
       });
-      console.log(result)
-    // let data = new FormData(formTask)
-    // const promise = await fetch()
+
   }
 
   function displayTodoList() {
