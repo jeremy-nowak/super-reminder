@@ -61,8 +61,8 @@ document.addEventListener("DOMContentLoaded", function () {
           error_password.innerHTML = "You need to type a password";
         }
         else if(regexPassword.test(passwordValue)){
-          password.style.backgroundColor = "initial";
-          password.style.borderColor = "initial";
+          password.style.backgroundColor = "#222823";
+          password.style.borderColor = "#222823";
         } 
         else{
           error_password.innerHTML = "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character"
@@ -78,8 +78,8 @@ document.addEventListener("DOMContentLoaded", function () {
         password_conf.style.backgroundColor = "red";
         error_password_conf.innerHTML = "You need to type a password";
       } else {
-        password_conf.style.backgroundColor = "initial";
-        password_conf.style.borderColor = "initial";
+        password_conf.style.backgroundColor = "#222823";
+        password_conf.style.borderColor = "#222823";
       }
     }
 
