@@ -49,7 +49,7 @@ class User extends Database
         }
     }
     
-    public function registerListBdd($listName, $userId, $todo, $state){
+    public function registerListBdd($listName, $userId, $todo){
 
         // Creer cette fonction
     }

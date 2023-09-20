@@ -93,7 +93,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
   
         let result = (await response.text()).trim();
-        console.log(result);
         if (result === "update accomplished") {
           setTimeout( result, 2000)
 

@@ -129,21 +129,15 @@ document.addEventListener("DOMContentLoaded", function () {
     registerTaskBtn.addEventListener('click' ,async function(e){
         e.preventDefault();
      
-        let data  = new FormData(formTask)
-        const response = await fetch("myList/registerTask",{
+        let data  = new FormData(formTask);
+        const response = await fetch("/myList/registerTask",{
             method: "POST",
             body: data,
-        })
+        });
 
         const result = await response.text()
-
-        console.log(result.valueOf)
-
-
-        
-
-
-      })    
+      });
+      console.log(result)
     // let data = new FormData(formTask)
     // const promise = await fetch()
   }
@@ -157,10 +151,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     todoDiv.setAttribute("className", "todos");
 
-    todoOption1.value = "1";
+    todoOption1.value = "0";
     todoOption1.textContent = "Comon";
 
-    todoOption.value = "0";
+    todoOption.value = "1";
     todoOption.textContent = "Priority";
 
     todoSelect.appendChild(todoOption);
