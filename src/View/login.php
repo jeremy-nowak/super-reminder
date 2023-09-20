@@ -21,12 +21,15 @@ require_once "header.php";
             <form  method="post" id="login_form">
 
                 <div class="field">
+                    <label for="login">Username</label>
                     <input type="text" placeholder="Username" name="login" id="login_login">
                 </div>
                 
                 <div class="field">
+                    <label for="password">Password</label>
                     <input type="password" placeholder="Password" name="password_login" id="password_login">
                 </div>
+
                 <div class="field btn">
                     <input type="submit" value="Login" id="submit_login">
                 </div>
@@ -35,7 +38,13 @@ require_once "header.php";
                     Not a member? <a href="register">Register</a>
                 </div>
 
-                <p id="error_form_login" ></p>
+                <div class="error_msg">
+                    <p id="error_form_login" ></p>
+                </div>
+
+                <div class="success_msg">
+                    <p id="success_form_login" ></p>
+                </div>
 
             </form>
         </div>

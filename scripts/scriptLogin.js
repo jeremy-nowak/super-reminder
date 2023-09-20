@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let password_login = document.querySelector("#password_login");
     let submit_login = document.querySelector("#submit_login");
     let error_form_login = document.querySelector("#error_form_login");
+    let success_form_login = document.querySelector("#success_form_login");
     
     // ----------------------------------------------------------------------------------------------
     // --------------------------------Verification of form inputS start-----------------------------
@@ -65,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       let result = (await response.text()).trim();
       if (result === "loginOK") {
-        error_form_login.innerHTML = "Login success"
+        success_form_login.innerHTML = "Login success"
         setTimeout( indexLocation, 2000)
         }
       if (result === "loginFail") {

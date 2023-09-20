@@ -68,11 +68,6 @@ class AuthController
 
         }
 
-
-
-
-
-
     }
 
     public function checkIdUser(){
