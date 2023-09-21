@@ -38,7 +38,6 @@ $router->map( 'POST', '/register/registerValidate', function(){
     $password = $_POST["password"];
 
     $authModel->register($login, $password);
-
 }, "home");
 
 $router->map('GET', '/logout', function () {
@@ -54,7 +53,6 @@ $router->map( 'POST', '/login/loginValidate',function(){
 },  "loginValidate");
 
 
-
 $router->map( 'POST', '/profile/updateProfile',function(){
     $authController = new AuthController();
     $authController->updateProfile();
@@ -64,32 +62,27 @@ $router->map( 'GET', '/myList',function(){
     require_once "src/View/myList.php";
 }, "myList");
 
-$router->map('POST', '/myList/registerTask', function(){
+$router->map('POST', '/myList/registerTitle', function(){
     
-    $userId = $_SESSION['user']["id_user"];
-    $listName = $_POST["listName"];
-    $task = $_POST["inputTodo"];
-    $priority = $_POST["todoSelect"];
-    var_dump($_POST["inputTodo"], $_POST["todoSelect"]);
-    var_dump($_POST);
-
-
+    $titleName = $_POST["task_list"];
     $authController = new AuthController();
-    $authController->registerListAndTask($userId, $listName, $task, $priority );
+    $authController->registerlistName($titleName);
     
 }, "registerMyList" );
+
+
+$router->map('POST', '/myList/registerTask', function(){
+    var_dump($_POST);
+    // $task = $_POST["inputTodo"];
+    // $authController = new AuthController();
+    // $authController->registerTask($task);
+    
+}, "registerTask" );
 
 // $router->map( 'GET', '/myList/form',function(){
 //     require_once "src/View/myList.php";
 // }, "myListForm");
 
-// $router->map( 'GET', '/myList/formTodo',function(){
-//     require_once "src/View/myListFormTodo.php"; 
-// }, "myListFormTodo");
-
-// $router->map( 'GET', '/myList/formList',function(){
-//     require_once "src/View/myListFormList.php";
-// }, "myListFormList");
 
 
 

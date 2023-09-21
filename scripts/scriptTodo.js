@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function addTitleAndTask() {
     let task_list_value = task_list.value.trim();
-    console.log(task_list_value);
+    // console.log(task_list_value);
 
     let formTask = document.createElement("form");
     formTask.setAttribute("class", "formTask");
@@ -91,6 +91,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     task_list.value = "";
 
+// -------------------------------------------------------------------------------
+// -------------------addEventListener-------------------------------------------
+// -------------------------------------------------------------------------------
+
+
     registerTaskBtn.addEventListener('click' ,async function(e){
         e.preventDefault();
      
@@ -104,35 +109,28 @@ document.addEventListener("DOMContentLoaded", function () {
         const result = await response.text()
       });
 
+
+// -----------------------------------------------------------------------------------
+
+
   }
 
-  // function displayTodoList() {
-  //   let todoDiv = document.createElement("div");
-  //   let todoP = document.createElement("p");
-  //   let todoSelect = document.createElement("select");
-  //   let todoOption = document.createElement("option");
-  //   let todoOption1 = document.createElement("option");
+  myList_form_title.addEventListener('submit' ,async function(e){
+    e.preventDefault();
+    
+    let data  = new FormData(myList_form_title);
+    console.log(data)
 
-  //   todoDiv.setAttribute("className", "todos");
+    const response = await fetch("myList/registerTitle",{
+        method: "POST",
+        body: data,
+    });
 
-  //   todoOption1.value = "0";
-  //   todoOption1.textContent = "Comon";
+    const result = await response.text()
 
-  //   todoOption.value = "1";
-  //   todoOption.textContent = "Priority";
 
-  //   todoSelect.appendChild(todoOption);
-  //   todoSelect.appendChild(todoOption1);
+  });
 
-  //   todoDiv.appendChild(todoP);
-  //   todoDiv.appendChild(todoSelect);
-
-  //   displayFormTodo.appendChild(todoDiv);
-  // }
-
-  async function displayTodoForm() {
-    let TodoForm = fetch("myList/formTodo");
-  }
 
 
   myList_form_title.addEventListener("submit", function (e) {

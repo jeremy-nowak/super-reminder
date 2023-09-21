@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Controller;
+
+use App\Model\Todo;
 use App\Model\User;
 
 if (!isset($_SESSION)) {
@@ -53,30 +55,64 @@ class AuthController
         }
     }
 
-    public function registerListAndTask($userId, $listName, $task, $priority){
+    public function registerListName($listName){
 
-
-        $userId = htmlspecialchars($userId);
+        $userId = $_SESSION["user"]["id_user"];
         $listName = htmlspecialchars($listName);
-        $task = htmlspecialchars($task);
-        $priority = htmlspecialchars($priority);
-
-        $userId = trim($userId);    
+        $userId = htmlspecialchars($userId);
+        $userId = trim($userId);
         $listName = trim($listName);
-        $task = trim($task);
-        $priority = trim($priority);
 
-
-
-        if(isset($_SESSION) && $this->checkIdUser($userId) === "existing"){
-            $user = new User();
-            $user->registerListBdd($listName, $task, $priority);
-
+        if (isset($_SESSION) && $this->checkIdUser($userId) === "existing") {
+            $user = new Todo();
+            $user->registerListName($listName, $userId);
         }
-
     }
 
-    public function checkIdUser(){ 
+
+    public function registerTask(){
+        
+        $userId = $_SESSION["user"]["id_user"];
+        $idList = $_POST["id_list"];
+        $task = $_POST["task"];
+        $priority = $_POST["priority"];
+        $startDate = $_POST["start_date"];
+        $endDate = $_POST["end_date"];
+        $state = $_POST["state"];
+
+        $userId = htmlspecialchars($userId);
+        $idList = htmlspecialchars($idList);
+        $task = htmlspecialchars($task);
+        $priority = htmlspecialchars($priority);
+        $startDate = htmlspecialchars($startDate);
+        $endDate = htmlspecialchars($endDate);
+        $state = htmlspecialchars($state);
+
+        $userId = trim($userId);
+        $idList = trim($idList);
+        $task = trim($task);
+        $priority = trim($priority);
+        $startDate = trim($startDate);
+        $endDate = trim($endDate);
+        $state = trim($state);
+
+        if (isset($_SESSION) && $this->checkIdUser($userId) === "existing") {
+            $user = new Todo();
+            $user->registerTask($idList, $task, $priority, $startDate, $endDate, $state);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+    public function checkIdUser()
+    {
 
         $userId = trim($_SESSION['user']["id_user"]);
         $userId = htmlspecialchars($userId);
@@ -115,7 +151,7 @@ class AuthController
         if (
             !empty($password) &&
             !empty($password_conf) &&
-            $password === $password_conf 
+            $password === $password_conf
 
         ) {
             $password = trim($password);
@@ -131,13 +167,10 @@ class AuthController
 
                     $user = new User();
                     $user->update($login, $password, $id);
-                }
-                else{
+                } else {
                     echo "Problem between input password and password confirmation";
                 }
-            }
-            
-            else{
+            } else {
                 echo "Problem with password length or characters";
             }
         } else {
