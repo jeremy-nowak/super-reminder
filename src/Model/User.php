@@ -48,11 +48,39 @@ class User extends Database
         }
     }
     
-    public function registerListBdd($listName, $userId, $todo){
+    public function registerListBdd($listName, $task, $priority){
+        $sql = "INSERT INTO `task` (`list_name`, `task`, `priority`, `start_date`) VALUES (:list_name, :task, :priority, NOW())";
+        $prepare = $this->bdd->prepare($sql);
+        $prepare->execute([':list_name' => $listName, ':task' => $task, ':priority' => $priority]);
+                if ($prepare) {
+            echo "registerListTaskOk";
+            return "registerListTaskOk";
+        }
+        else{
+            echo "registerListTasNotOk";
+            return "registerListTasNotOk";
+        }
 
         // Creer cette fonction
     }
     
+    public function checkIdUser($userId){
+
+        $sql = "SELECT id_user FROM users WHERE id_user = :id_user";
+        $stmt = $this->bdd->prepare($sql);
+        $stmt->execute([':id_user' => $userId]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($user) {
+            echo "existing";
+            return "existing";
+        } else {
+            echo "notexisting";
+            return "notexisting";
+        }
+
+
+    }
 
 
      public function register($login, $password)
@@ -105,8 +133,8 @@ class User extends Database
                 echo "loginOK";
                 return "loginOK";
             } else {
-                echo "loginFail";
-                return "loginFail";
+                echo "loginFailpass";
+                return "loginFaipassl";
             }
         } else {
             echo "loginFail";
