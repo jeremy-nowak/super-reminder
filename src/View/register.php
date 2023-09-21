@@ -40,11 +40,14 @@ require_once "header.php";
                 </div>
 
                 <div class="field btn">
-                    <input type="submit" value="Submit" id="submit_register">
+                    <input type="submit" value="Register" id="submit_register">
                 </div>
 
                 <div class="error_msg">
                     <p id="error_login"></p>
+                </div>
+                <div class="success_msg">
+                    <p id="success_submit"></p>
                 </div>
                 <div class="error_msg">
                     <p id="error_submit"></p>

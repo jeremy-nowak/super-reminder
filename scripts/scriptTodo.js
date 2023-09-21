@@ -99,12 +99,12 @@ document.addEventListener("DOMContentLoaded", function () {
     registerTaskBtn.addEventListener('click' ,async function(e){
         e.preventDefault();
      
-        let data  = new FormData(formTask);
+        let data  = new FormData(formTask)
         data.append("listName", task_list_value)
         const response = await fetch("myList/registerTask",{
             method: "POST",
             body: data,
-        });
+        })
 
         const result = await response.text()
       });
@@ -130,6 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   });
+
 
 
   myList_form_title.addEventListener("submit", function (e) {

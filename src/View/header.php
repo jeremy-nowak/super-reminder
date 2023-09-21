@@ -24,9 +24,10 @@ if (!isset($_SESSION)) {
             <?php } else { ?>
                 <li><a href="./">Home</a></li>
                 <li><a href="./myList">My list</a></li>
+                <li><a href="./myList">Create task</a></li>
                 <li><a href="./profile">Profile</a></li>
                 <li><a href="./logout">Logout</a></li>
-                <li><a href="./myList">Create task</a></li>
+
 
             <?php } ?>
             </ul>

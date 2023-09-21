@@ -37,7 +37,7 @@ require_once "header.php";
                 </div>
 
                 <div class="field btn">
-                    <input type="submit" value="Submit" id="submit_profile">
+                    <input type="submit" value="Save" id="submit_profile">
                 </div>
 
                 <div class="success_msg">
