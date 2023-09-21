@@ -67,15 +67,15 @@ $router->map( 'GET', '/myList',function(){
 $router->map('POST', '/myList/registerTask', function(){
     
     $userId = $_SESSION['user']["id_user"];
-    $listName = $_POST["inputTodo"];
+    $listName = $_POST["listName"];
+    $task = $_POST["inputTodo"];
     $priority = $_POST["todoSelect"];
-    $todo = "";
     var_dump($_POST["inputTodo"], $_POST["todoSelect"]);
-    var_dump($_SESSION);
+    var_dump($_POST);
 
 
     $authController = new AuthController();
-    $authController->registerListAndTask($userId, $listName, $todo, $priority );
+    $authController->registerListAndTask($userId, $listName, $task, $priority );
     
 }, "registerMyList" );
 

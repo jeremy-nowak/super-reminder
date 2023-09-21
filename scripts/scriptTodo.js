@@ -4,42 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
   let submit_form_title = document.querySelector("#submit_form_title");
   let displayFormTodo = document.querySelector("#displayFormTodo");
 
-  // --------------------------v1-----------------
-  //  function addTitleAndTask() {
-
-  //     let task_list_value = task_list.value.trim();
-  //     console.log(task_list_value)
-  //     let titleDiv = document.createElement("div");
-  //     let titleP = document.createElement("p");
-  //     titleP.innerHTML = task_list_value
-  //     titleDiv.appendChild(titleP)
-  //     displayFormTodo.appendChild(titleDiv)
-
-  //     let inputTodo = document.createElement("input")
-  //     let todoSelect = document.createElement("select");
-  //     let todoOption = document.createElement("option");
-  //     let todoOption1 = document.createElement("option");
-
-  //     inputTodo.setAttribute("type", "text");
-
-  //         todoOption1.value = "1";
-  //         todoOption1.textContent = "Comon task"
-
-  //         todoOption.value = "0";
-  //         todoOption.textContent = "Urgent task";
-
-  //         todoSelect.appendChild(todoOption);
-  //         todoSelect.appendChild(todoOption1);
-
-  //         titleDiv.appendChild(titleP);
-  //         titleDiv.appendChild(inputTodo);
-  //         titleDiv.appendChild(todoSelect);
-
-  //         displayFormTodo.appendChild(titleDiv);
-  //         task_list.innerHTML = "";
-
-  // }
-  // --------------------------------v1 fin-------------------------------
 
   function addTitleAndTask() {
     let task_list_value = task_list.value.trim();
@@ -55,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
     titleP.setAttribute("class", "titleP");
     titleP.setAttribute("id", "titleP")
     titleP.setAttribute("name", "titleP")
+    titleP.setAttribute("data-id", "titleP")
     titleP.innerHTML = task_list_value;
     formTask.appendChild(titleP);
 
@@ -78,19 +43,19 @@ document.addEventListener("DOMContentLoaded", function () {
     
     let todoOption = document.createElement("option");
     let todoOption1 = document.createElement("option");
-    
+    let todoOption2 = document.createElement("option");
 
     
-    
-
     todoOption1.value = "1";
-    todoOption1.textContent = "Common task";
-
-    todoOption.value = "0";
+    todoOption1.textContent = "Low priority task";
+    todoOption2.value = "2";
+    todoOption2.textContent = "Common task";
+    todoOption.value = "3";
     todoOption.textContent = "Urgent task";
 
-    todoSelect.appendChild(todoOption);
     todoSelect.appendChild(todoOption1);
+    todoSelect.appendChild(todoOption2)
+    todoSelect.appendChild(todoOption);
 
     formTask.appendChild(titleP);
     formTask.appendChild(inputTodo);
@@ -130,6 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
         e.preventDefault();
      
         let data  = new FormData(formTask);
+        data.append("listName", task_list_value)
         const response = await fetch("myList/registerTask",{
             method: "POST",
             body: data,
@@ -140,35 +106,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
   }
 
-  function displayTodoList() {
-    let todoDiv = document.createElement("div");
-    let todoP = document.createElement("p");
-    let todoSelect = document.createElement("select");
-    let todoOption = document.createElement("option");
-    let todoOption1 = document.createElement("option");
+  // function displayTodoList() {
+  //   let todoDiv = document.createElement("div");
+  //   let todoP = document.createElement("p");
+  //   let todoSelect = document.createElement("select");
+  //   let todoOption = document.createElement("option");
+  //   let todoOption1 = document.createElement("option");
 
-    todoDiv.setAttribute("className", "todos");
+  //   todoDiv.setAttribute("className", "todos");
 
-    todoOption1.value = "0";
-    todoOption1.textContent = "Comon";
+  //   todoOption1.value = "0";
+  //   todoOption1.textContent = "Comon";
 
-    todoOption.value = "1";
-    todoOption.textContent = "Priority";
+  //   todoOption.value = "1";
+  //   todoOption.textContent = "Priority";
 
-    todoSelect.appendChild(todoOption);
-    todoSelect.appendChild(todoOption1);
+  //   todoSelect.appendChild(todoOption);
+  //   todoSelect.appendChild(todoOption1);
 
-    todoDiv.appendChild(todoP);
-    todoDiv.appendChild(todoSelect);
+  //   todoDiv.appendChild(todoP);
+  //   todoDiv.appendChild(todoSelect);
 
-    displayFormTodo.appendChild(todoDiv);
-  }
+  //   displayFormTodo.appendChild(todoDiv);
+  // }
 
   async function displayTodoForm() {
     let TodoFOrm = fetch("myList/formTodo");
   }
 
-  function createTodo(task_list) {}
 
   myList_form_title.addEventListener("submit", function (e) {
     e.preventDefault();

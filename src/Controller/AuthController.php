@@ -53,29 +53,35 @@ class AuthController
         }
     }
 
-    public function registerListAndTask($userId, $listName, $todo, $priority){
+    public function registerListAndTask($userId, $listName, $task, $priority){
+
 
         $userId = htmlspecialchars($userId);
         $listName = htmlspecialchars($listName);
+        $task = htmlspecialchars($task);
         $priority = htmlspecialchars($priority);
 
         $userId = trim($userId);    
         $listName = trim($listName);
+        $task = trim($task);
         $priority = trim($priority);
 
 
 
         if(isset($_SESSION) && $this->checkIdUser($userId) === "existing"){
-
             $user = new User();
-            $user->registerListBdd($listName, $userId,$todo);
+            $user->registerListBdd($listName, $task, $priority);
 
         }
 
     }
 
-    public function checkIdUser(){
-        // Créer cette fonction
+    public function checkIdUser(){ 
+
+        $userId = trim($_SESSION['user']["id_user"]);
+        $userId = htmlspecialchars($userId);
+        $user = new User();
+        return $user->checkIdUser($userId);
     }
 
     public function authLogin()
