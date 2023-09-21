@@ -48,21 +48,7 @@ class User extends Database
         }
     }
     
-    public function registerListBdd($listName, $task, $priority){
-        $sql = "INSERT INTO `task` (`list_name`, `task`, `priority`, `start_date`) VALUES (:list_name, :task, :priority, NOW())";
-        $prepare = $this->bdd->prepare($sql);
-        $prepare->execute([':list_name' => $listName, ':task' => $task, ':priority' => $priority]);
-                if ($prepare) {
-            echo "registerListTaskOk";
-            return "registerListTaskOk";
-        }
-        else{
-            echo "registerListTasNotOk";
-            return "registerListTasNotOk";
-        }
 
-        // Creer cette fonction
-    }
     
     public function checkIdUser($userId){
 
