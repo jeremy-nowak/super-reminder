@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let error_password_conf = document.querySelector("#error_password_conf");
     let error_login = document.querySelector("#error_login");
     let error_submit = document.querySelector("#error_submit");
+    let success_submit = document.querySelector("#success_submit");
 
     // ----------------------------------------------------------------------------------------------
     // --------------------------------Verification of form inputS start--------------------------
@@ -108,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
       let result = (await response.text()).trim();
       console.log(result)
       if (result === "notexistingregisterOK") {
-        error_submit.innerHTML = "Congratulation you are registered !";
+        success_submit.innerHTML = "Congratulation you are registered !";
         setTimeout(() => {
           locationLogin();
         }, 2000);

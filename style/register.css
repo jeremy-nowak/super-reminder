@@ -118,7 +118,15 @@
 
 .error_msg {
     color: red;
-    font-size: 17px;
+    font-size: 18px;
+    font-weight: 500;
+    padding-top: 5px;
+    text-align: center;
+}
+
+.success_msg{
+    color: green;
+    font-size: 18px;
     font-weight: 500;
     margin-top: 15px;
     text-align: center;
