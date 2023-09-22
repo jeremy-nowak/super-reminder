@@ -94,38 +94,34 @@ document.addEventListener("DOMContentLoaded", function () {
 // -------------------------------------------------------------------------------
 // -------------------addEventListener-------------------------------------------
 // -------------------------------------------------------------------------------
+registerTaskBtn.addEventListener('click' ,async function(e){
+  e.preventDefault();
+
+  let data  = new FormData(formTask);
+  data.append("listName", task_list_value)
+  const response = await fetch("myList/registerTask",{
+      method: "POST",
+      body: data,
+  });
+
+  const result = await response.text()
+});
 
 
-    registerTaskBtn.addEventListener('click' ,async function(e){
-        e.preventDefault();
-     
-        let data  = new FormData(formTask)
-        data.append("listName", task_list_value)
-        const response = await fetch("myList/registerTask",{
-            method: "POST",
-            body: data,
-        })
-
-        const result = await response.text()
-      });
 
 
-// -----------------------------------------------------------------------------------
+}
 
-
-  }
-
-  myList_form_title.addEventListener('submit' ,async function(e){
-    e.preventDefault();
+myList_form_title.addEventListener('submit' ,async function(e){
+  e.preventDefault();
     
     let data  = new FormData(myList_form_title);
     console.log(data)
-
+    
     const response = await fetch("myList/registerTitle",{
-        method: "POST",
+      method: "POST",
         body: data,
     });
-
     const result = await response.text()
 
 

@@ -12,16 +12,14 @@ if (!isset($_SESSION)) {
 class AuthController
 {
 
-    function checkLoginAuth($login)
-    {
+    function checkLoginAuth($login){
 
         $user = new User();
         return $user->checkLogin($login);
     }
 
 
-    function register()
-    {
+    function register(){
         $regexPassword = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/';
         $login = trim($_POST['login']);
         $password = trim($_POST['password']);
@@ -55,50 +53,87 @@ class AuthController
         }
     }
 
-    public function registerListName($listName){
+    // public function registerListName($listName){
 
+    //     $userId = $_SESSION["user"]["id_user"];
+    //     $listName = htmlspecialchars($listName);
+    //     $userId = htmlspecialchars($userId);
+    //     $userId = trim($userId);
+    //     $listName = trim($listName);
+
+    //     if (isset($_SESSION) && $this->checkIdUser($userId) === "existing") {
+    //         $user = new Todo();
+    //         $user->registerListName($listName, $userId);
+    //     }
+
+
+
+
+        
+    // }
+
+
+    public function registerListName($listName){
         $userId = $_SESSION["user"]["id_user"];
         $listName = htmlspecialchars($listName);
         $userId = htmlspecialchars($userId);
         $userId = trim($userId);
         $listName = trim($listName);
+    
+        var_dump($_POST);
+        // Vérifiez si l'utilisateur existe déjà
+        if ($this->checkIdUser($userId) === "existing") {
+            $todo = new Todo();
+            var_dump("Vérifiez si la liste de tâches existe déjà");
+            $existingList = $todo->checkListName($listName);
+            
+            if ($existingList) {
+                var_dump("La liste de tâches existe déjà, récupérez l'ID");
+                $_SESSION['id_list_name'] = $existingList['id_list_name'];
+                
+            } else {
+                
+                var_dump("La liste de tâches n'existe pas, créez-la");
+                $todo->registerListName($listName, $userId);
+            }
 
-        if (isset($_SESSION) && $this->checkIdUser($userId) === "existing") {
-            $user = new Todo();
-            $user->registerListName($listName, $userId);
         }
     }
+    
 
 
-    public function registerTask(){
+
+
+
+
+
+    public function registerTask($task){
         
         $userId = $_SESSION["user"]["id_user"];
-        $idList = $_POST["id_list"];
-        $task = $_POST["task"];
-        $priority = $_POST["priority"];
-        $startDate = $_POST["start_date"];
-        $endDate = $_POST["end_date"];
-        $state = $_POST["state"];
+        $idList = $_SESSION["id_list_name"];
+        $priority = $_POST["todoSelect"];
 
         $userId = htmlspecialchars($userId);
         $idList = htmlspecialchars($idList);
         $task = htmlspecialchars($task);
         $priority = htmlspecialchars($priority);
-        $startDate = htmlspecialchars($startDate);
-        $endDate = htmlspecialchars($endDate);
-        $state = htmlspecialchars($state);
 
         $userId = trim($userId);
         $idList = trim($idList);
         $task = trim($task);
         $priority = trim($priority);
-        $startDate = trim($startDate);
-        $endDate = trim($endDate);
-        $state = trim($state);
 
         if (isset($_SESSION) && $this->checkIdUser($userId) === "existing") {
-            $user = new Todo();
-            $user->registerTask($idList, $task, $priority, $startDate, $endDate, $state);
+            if (isset($_SESSION['id_list_name'])) {
+                $idList = $_SESSION['id_list_name'];
+                $user = new Todo();
+                $user->registerTask($idList, $task, $priority);
+            }
+            else{
+                $user = new Todo();
+                $user->registerTask($idList, $task, $priority);
+            }
+
         }
     }
 
@@ -171,7 +206,7 @@ class AuthController
                     echo "Problem between input password and password confirmation";
                 }
             } else {
-                echo "Problem with password length or characters";
+                    echo "Problem with password length or characters";
             }
         } else {
             echo "At least one input empty";
