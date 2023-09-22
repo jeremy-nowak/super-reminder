@@ -72,6 +72,18 @@ public function registerTask(){
     
 }
 
+// public function sortTask($listName){
+//     $idList = $this->getIdList($listName)['id_list'];
+
+//     $stmt = "SELECT * FROM task WHERE id_list = :id_list ORDER BY priority ASC";
+//     $stmt = $this->bdd->prepare($stmt);
+//     $stmt->execute(array(
+//         'id_list' => $idList
+//     ));
+//     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//     return $result;
+// }
+
 // public function registerListBdd($listName, $task, $priority){
 //     $sql = "INSERT INTO `task` (`list_name`, `task`, `priority`, `start_date`) VALUES (:list_name, :task, :priority, NOW())";
 //     $prepare = $this->bdd->prepare($sql);
@@ -94,6 +106,7 @@ public function addTodo($id, $list, $title, $description, $start_date, $end_date
 
 
 }
+
 
 
 
