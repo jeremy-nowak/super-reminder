@@ -84,6 +84,8 @@ public function registerTask(){
 //     return $result;
 // }
 
+
+
 // public function registerListBdd($listName, $task, $priority){
 //     $sql = "INSERT INTO `task` (`list_name`, `task`, `priority`, `start_date`) VALUES (:list_name, :task, :priority, NOW())";
 //     $prepare = $this->bdd->prepare($sql);
@@ -107,13 +109,14 @@ public function addTodo($id, $list, $title, $description, $start_date, $end_date
 
 }
 
-
-
-
-
-
+// public function deleteTask($id){
+//     $stmt = "DELETE FROM `task` WHERE id_task = :id_task";
+//     $stmt = $this->bdd->prepare($stmt);
+//     $stmt->execute(array(
+//         'id_task' => $id
+//     ));
+// }
 }
-
 
 
 ?>
