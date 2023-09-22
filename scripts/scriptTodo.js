@@ -81,8 +81,10 @@ document.addEventListener("DOMContentLoaded", function () {
     let deleteButon = document.createElement("button");
     deleteButon.textContent = "Delete";
     deleteButon.setAttribute("class", "deleteButon");
-    deleteButon.setAttribute("id", "deleteButon")
-    deleteButon.setAttribute("name", "deleteButon")
+    deleteButon.setAttribute("id", "deleteButon");
+    deleteButon.setAttribute("name", "deleteButon");
+    deleteButon.setAttribute("data-id", "taskId");
+    deleteButon.addEventListener('click', deleteTask);
 
     formTask.appendChild(deleteButon);
 
@@ -141,7 +143,21 @@ myList_form_title.addEventListener('submit' ,async function(e){
 //   })
 
 
+// -------------------------------------------------------------------------------
+// -------------------Delete task----------------------------------------------------
+// -------------------------------------------------------------------------------
 
+// async function deleteTask(e){
+//   const taskId = e.target.getAttribute("data-id");
+//   const response = await fetch("Todo/deleteTask",{
+//     method: "DELETE",
+// });
+
+// if (response.ok){
+//   e.target.closest(".formTask").remove();
+// } else {
+//   console.error("failed to delete task");
+// }};
 
 
 
