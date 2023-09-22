@@ -71,15 +71,15 @@ public function getIdList($titleName){
 }
 
 public function registerTask(){
-            var_dump("utilisation de registerTask");
+    var_dump("utilisation de registerTask");
 
-        $stmt = "INSERT INTO `task` (`id_list`, `task`, `priority`) VALUES (:id_list, :task, :priority, :start_date, :end_date, :state)";
-        $stmt = $this->bdd->prepare($stmt);
-        $stmt->execute([
-            'id_list' => $_SESSION['id_list_name'],
-            'task' => $_POST['inputTodo'],
-            'priority' => $_POST['priority'],
-        ]);
+    $stmt = "INSERT INTO `task` (`id_list`, `task`, `priority`, `date_task`) VALUES (:id_list, :task, :priority, NOW())";
+    $stmt = $this->bdd->prepare($stmt);
+    $stmt->execute([
+        'id_list' => $_SESSION['id_list_name'],
+        'task' => $_POST['inputTodo'],
+        'priority' => $_POST['todoSelect']
+    ]);
 }
 
 // public function registerListBdd($listName, $task, $priority){

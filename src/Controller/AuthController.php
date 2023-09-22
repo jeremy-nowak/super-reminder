@@ -96,7 +96,6 @@ class AuthController
                 var_dump("La liste de tâches n'existe pas, créez-la");
                 $todo->registerListName($listName, $userId);
             }
-
         }
     }
     
