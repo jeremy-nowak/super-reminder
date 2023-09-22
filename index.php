@@ -62,6 +62,10 @@ $router->map( 'GET', '/myList',function(){
     require_once "src/View/myList.php";
 }, "myList");
 
+$router->map( 'GET', '/myListCreate',function(){
+    require_once "src/View/myListCreate.php";
+}, "myListCreate");
+
 $router->map('POST', '/myList/registerTitle', function(){
     
     $titleName = $_POST["task_list"];

@@ -1,30 +1,14 @@
 <?php
 require_once "header.php";
-var_dump($_SESSION);
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer src="scripts/scriptTodo.js"></script>
-    <title>myList</title>
+    <title>Document</title>
 </head>
-
 <body>
-
-    <form method="post" id="myList_form_title">
-        <label for="task_list">List name</label>
-        <input type="text" class="task_list" name="task_list" id="task_list">
-        <input type="submit" id="submit_form_title" value="Submit">
-    </form>
-
-    <h1>To do list display</h1>
-    <div id="displayFormTodo" ></div>
-
-
+    <h1>Ici Alix va faire apparaitre les List avec les Task dedans !</h1>
 </body>
 </html>
