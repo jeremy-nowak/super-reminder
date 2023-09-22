@@ -72,10 +72,11 @@ $router->map('POST', '/myList/registerTitle', function(){
 
 
 $router->map('POST', '/myList/registerTask', function(){
+
     var_dump($_POST);
-    // $task = $_POST["inputTodo"];
-    // $authController = new AuthController();
-    // $authController->registerTask($task);
+    $task = $_POST["inputTodo"];
+    $authController = new AuthController();
+    $authController->registerTask($task);
     
 }, "registerTask" );
 

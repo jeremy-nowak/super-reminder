@@ -17,7 +17,9 @@ public function todoDisplay(){
     
 }
 
-public function registerListName($titleName, $userId){
+
+public function checkListName($titleName){
+
 
     $statement = "SELECT * FROM `list_name` WHERE list_name = :list_name";
     $statement = $this->bdd->prepare($statement);
@@ -26,27 +28,39 @@ public function registerListName($titleName, $userId){
      ]);
     $result = $statement->fetch(PDO::FETCH_ASSOC);
       return $result;
+      var_dump($result);
       echo $result;
+}
 
+public function registerListNameWithId($titleName, $userId, $list_id){
+    
+        $stmt = "INSERT INTO `list_name` (id_user, list_name) VALUES (:id_user, :list_name) WHERE id_list_name = $list_id ";
+        $stmt = $this->bdd->prepare($stmt);
+        $stmt->execute([
+            'id_user' => $userId,
+            'list_name' => $titleName
+        ]); 
 
+    }
 
+    public function registerListName($listName, $userId){
+
+        $stmt = "INSERT INTO `list_name` (id_user, list_name) VALUES (:id_user, :list_name)";
+        $stmt = $this->bdd->prepare($stmt);
+        $stmt->execute([
+            'list_name' => $listName,
+            'id_user' => $userId
+        ]); 
+    }
 
 
     
 
-        // $stmt = "INSERT INTO `list_name` (id_user, list_name) VALUES (:id_user, :list_name)";
-        // $stmt = $this->bdd->prepare($stmt);
-        // $stmt->execute([
-        //     'list_name' => $titleName,
-        //     'id_user' => $userId
-        // ]); 
-
-}
 
 public function getIdList($titleName){
 
 
-    $statement = "SELECT id_list FROM list_name WHERE list_name = :list_name";
+    $statement = "SELECT id_list_name FROM `list_name` WHERE list_name = :list_name";
     $statement = $this->bdd->prepare($statement);
     $statement->execute([
         'list_name' => $titleName
@@ -57,19 +71,15 @@ public function getIdList($titleName){
 }
 
 public function registerTask(){
-            
-        $stmt = "INSERT INTO `task` (`id_list`, `task`, `priority`, `start_date`, `end_date`, `state`) VALUES (:id_list, :task, :priority, :start_date, :end_date, :state)";
-        $stmt = $this->bdd->prepare($stmt);
-        $stmt->execute(array(
-            'id_list' => $_POST['id_list'],
-            'task' => $_POST['task'],
-            'priority' => $_POST['priority'],
-            'start_date' => $_POST['start_date'],
-            'end_date' => $_POST['end_date'],
-            'state' => $_POST['state']
-        ));
+            var_dump("utilisation de registerTask");
 
-    
+        $stmt = "INSERT INTO `task` (`id_list`, `task`, `priority`) VALUES (:id_list, :task, :priority, :start_date, :end_date, :state)";
+        $stmt = $this->bdd->prepare($stmt);
+        $stmt->execute([
+            'id_list' => $_SESSION['id_list_name'],
+            'task' => $_POST['inputTodo'],
+            'priority' => $_POST['priority'],
+        ]);
 }
 
 // public function registerListBdd($listName, $task, $priority){
@@ -88,19 +98,4 @@ public function registerTask(){
 //     // Creer cette fonction
 // }
 
-public function addTodo($id, $list, $title, $description, $start_date, $end_date, $state){
-
-    $stmt = "INSERT INTO `todo` WHERE id = $id ";
-
-
 }
-
-
-
-
-
-}
-
-
-
-?>
