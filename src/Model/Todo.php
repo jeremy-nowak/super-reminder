@@ -89,6 +89,19 @@ public function displayTodos($id_user){
     return $result;
 
 }
+// public function sortTask($listName){
+//     $idList = $this->getIdList($listName)['id_list'];
+
+//     $stmt = "SELECT * FROM task WHERE id_list = :id_list ORDER BY priority ASC";
+//     $stmt = $this->bdd->prepare($stmt);
+//     $stmt->execute(array(
+//         'id_list' => $idList
+//     ));
+//     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//     return $result;
+// }
+
+
 
 
 // public function registerListBdd($listName, $task, $priority){
@@ -107,4 +120,23 @@ public function displayTodos($id_user){
 //     // Creer cette fonction
 // }
 
+  
+public function addTodo($id, $list, $title, $description, $start_date, $end_date, $state){
+
+    $stmt = "INSERT INTO `todo` WHERE id = $id ";
+
+
 }
+
+// public function deleteTask($id){
+//     $stmt = "DELETE FROM `task` WHERE id_task = :id_task";
+//     $stmt = $this->bdd->prepare($stmt);
+//     $stmt->execute(array(
+//         'id_task' => $id
+//     ));
+// }
+}
+
+
+?>
+
