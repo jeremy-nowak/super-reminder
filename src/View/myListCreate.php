@@ -1,5 +1,6 @@
 <?php
 require_once "header.php";
+var_dump($_SESSION);
 ?>
 
 
@@ -23,6 +24,9 @@ require_once "header.php";
 
     <h1>To do list creation</h1>
     <div id="displayFormTodo" ></div>
+
+    <h1>To do list display</h1>
+    <div id="displayRegisteredTodo"></div>
 
 
 </body>

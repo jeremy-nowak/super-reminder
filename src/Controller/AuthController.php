@@ -9,8 +9,7 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-class AuthController
-{
+class AuthController{
 
     function checkLoginAuth($login){
 
@@ -100,12 +99,6 @@ class AuthController
     }
     
 
-
-
-
-
-
-
     public function registerTask($task){
         
         $userId = $_SESSION["user"]["id_user"];
@@ -128,25 +121,12 @@ class AuthController
                 $user = new Todo();
                 $user->registerTask($idList, $task, $priority);
             }
-            else{
-                $user = new Todo();
-                $user->registerTask($idList, $task, $priority);
-            }
 
         }
     }
 
 
-
-
-
-
-
-
-
-
-    public function checkIdUser()
-    {
+    public function checkIdUser(){
 
         $userId = trim($_SESSION['user']["id_user"]);
         $userId = htmlspecialchars($userId);
@@ -154,8 +134,7 @@ class AuthController
         return $user->checkIdUser($userId);
     }
 
-    public function authLogin()
-    {
+    public function authLogin(){
 
         $login = trim($_POST['login']);
         $password = trim($_POST['password_login']);
@@ -165,15 +144,13 @@ class AuthController
     }
 
 
-    public function logoutAuth()
-    {
+    public function logoutAuth(){
         session_destroy();
         header("Location: ./");
     }
 
 
-    public function updateProfile()
-    {
+    public function updateProfile(){
 
         $regexPassword = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/';
         $login = trim($_POST['login']);
@@ -211,4 +188,76 @@ class AuthController
             echo "At least one input empty";
         }
     }
+
+
+    public function displayTodos(){
+
+        $id_user = $_SESSION["user"]["id_user"];
+        $todo = new Todo();
+        $todo->displayTodos($id_user);
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
