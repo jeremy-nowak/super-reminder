@@ -84,9 +84,12 @@ $router->map('POST', '/myList/registerTask', function(){
     
 }, "registerTask" );
 
-// $router->map( 'GET', '/myList/form',function(){
-//     require_once "src/View/myList.php";
-// }, "myListForm");
+$router->map( 'GET', '/myList/displayTodos',function(){
+
+    $authController = new AuthController();
+    $authController->displayTodos();
+
+}, "myListForm");
 
 
 
