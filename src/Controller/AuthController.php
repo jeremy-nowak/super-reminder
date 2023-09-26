@@ -83,46 +83,52 @@ class AuthController{
         // Vérifiez si l'utilisateur existe déjà
         if ($this->checkIdUser($userId) === "existing") {
             $todo = new Todo();
-            var_dump("Vérifiez si la liste de tâches existe déjà");
+            // var_dump("Vérifiez si la liste de tâches existe déjà");
             $existingList = $todo->checkListName($listName);
             
             if ($existingList) {
-                var_dump("La liste de tâches existe déjà, récupérez l'ID");
+                // var_dump("La liste de tâches existe déjà, récupérez l'ID");
                 $_SESSION['id_list_name'] = $existingList['id_list_name'];
                 
             } else {
                 
-                var_dump("La liste de tâches n'existe pas, créez-la");
+                // var_dump("La liste de tâches n'existe pas, créez-la");
                 $todo->registerListName($listName, $userId);
             }
         }
     }
     
 
-    public function registerTask($task){
+    public function registerTask($task, $titleName){
         
         $userId = $_SESSION["user"]["id_user"];
-        $idList = $_SESSION["id_list_name"];
         $priority = $_POST["todoSelect"];
 
         $userId = htmlspecialchars($userId);
-        $idList = htmlspecialchars($idList);
+        $titleName = htmlspecialchars($titleName);
         $task = htmlspecialchars($task);
         $priority = htmlspecialchars($priority);
 
         $userId = trim($userId);
-        $idList = trim($idList);
+        $titleName = trim($titleName);
         $task = trim($task);
         $priority = trim($priority);
 
         if (isset($_SESSION) && $this->checkIdUser($userId) === "existing") {
-            if (isset($_SESSION['id_list_name'])) {
-                $idList = $_SESSION['id_list_name'];
-                $user = new Todo();
-                $user->registerTask($idList, $task, $priority);
+            $todo = new Todo();
+            if ($todoInfo = $todo->checkListName($titleName)) {
+                $listId = $todoInfo["id_list_name"];
+                $todo->registerTask( $listId, $task, $priority);
             }
-
         }
+    }
+
+    
+    public function checkListName($listName){
+        $listName = htmlspecialchars($listName);
+        $listName = trim($listName);
+        $todo = new Todo();
+        return $todo->checkListName($listName);
     }
 
 
@@ -194,7 +200,9 @@ class AuthController{
 
         $id_user = $_SESSION["user"]["id_user"];
         $todo = new Todo();
-        $todo->displayTodos($id_user);
+        $result = $todo->displayTodos($id_user);
+
+        return $result;
 
 
 }
