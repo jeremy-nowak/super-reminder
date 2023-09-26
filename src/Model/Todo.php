@@ -6,17 +6,14 @@ use App\Model\Database;
 class Todo extends Database{
 
 public function checkListName($titleName){
-
-
     $statement = "SELECT * FROM `list_name` WHERE list_name = :list_name";
     $statement = $this->bdd->prepare($statement);
     $statement->execute([
         'list_name' => $titleName
      ]);
     $result = $statement->fetch(PDO::FETCH_ASSOC);
-      return $result;
-      var_dump($result);
-      echo $result;
+    return $result;
+    echo $result;
 }
 
 public function registerListNameWithId($titleName, $userId, $list_id){
@@ -46,8 +43,7 @@ public function registerListNameWithId($titleName, $userId, $list_id){
 
     
 
-
-public function getIdList($titleName){
+    public function getIdList($titleName){
 
 
     $statement = "SELECT id_list_name FROM `list_name` WHERE list_name = :list_name";
@@ -60,13 +56,11 @@ public function getIdList($titleName){
 
 }
 
-public function registerTask(){
-    var_dump("utilisation de registerTask");
-
+public function registerTask($listId){
     $stmt = "INSERT INTO `task` (`id_list`, `task`, `priority`, `date_task`) VALUES (:id_list, :task, :priority, NOW())";
     $stmt = $this->bdd->prepare($stmt);
     $stmt->execute([
-        'id_list' => $_SESSION['id_list_name'],
+        'id_list' => $listId,
         'task' => $_POST['inputTodo'],
         'priority' => $_POST['todoSelect']
     ]);
@@ -81,14 +75,29 @@ public function registerTask(){
 
 public function displayTodos($id_user){
 
-    $select = "SELECT * FROM `task`INNER JOIN `list_name` on list_name.id_list_name = task.id_list WHERE :id_user = $id_user";
+    $select = "SELECT * FROM list_name WHERE id_user = :id_user";
     $select = $this->bdd->prepare($select);
-    $select->execute($id_user);
-
+    $select->execute([
+        ":id_user" => $id_user
+    ]);
     $result = $select->fetchAll(PDO::FETCH_ASSOC);
+    
+    for($x = 0; isset($result[$x]); $x++){
+        $id_list = $result[$x]['id_list_name'];
+        $select = "SELECT * FROM task WHERE id_list = :id_list";
+        $select = $this->bdd->prepare($select);
+        $select->execute([
+            ":id_list" => $id_list
+        ]);
+        if(!isset($result[$x]['task'])){
+            $result[$x]['task'] = [];
+        }
+        array_push($result[$x]['task'], $select->fetchAll(PDO::FETCH_ASSOC));
+    }
     return $result;
-
+    
 }
+
 // public function sortTask($listName){
 //     $idList = $this->getIdList($listName)['id_list'];
 
@@ -120,13 +129,6 @@ public function displayTodos($id_user){
 //     // Creer cette fonction
 // }
 
-  
-public function addTodo($id, $list, $title, $description, $start_date, $end_date, $state){
-
-    $stmt = "INSERT INTO `todo` WHERE id = $id ";
-
-
-}
 
 // public function deleteTask($id){
 //     $stmt = "DELETE FROM `task` WHERE id_task = :id_task";
@@ -136,7 +138,3 @@ public function addTodo($id, $list, $title, $description, $start_date, $end_date
 //     ));
 // }
 }
-
-
-?>
-

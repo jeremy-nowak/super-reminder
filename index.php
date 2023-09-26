@@ -76,18 +76,20 @@ $router->map('POST', '/myList/registerTitle', function(){
 
 
 $router->map('POST', '/myList/registerTask', function(){
-
     var_dump($_POST);
     $task = $_POST["inputTodo"];
+    $titleName = $_POST["listName"];
     $authController = new AuthController();
-    $authController->registerTask($task);
+    $authController->registerTask($task, $titleName);
     
 }, "registerTask" );
 
-$router->map( 'GET', '/myList/displayTodos',function(){
 
+$router->map( 'GET', '/myList/displayTodos',function(){
     $authController = new AuthController();
-    $authController->displayTodos();
+    $result = $authController->displayTodos();
+
+    echo json_encode($result);
 
 }, "myListForm");
 
