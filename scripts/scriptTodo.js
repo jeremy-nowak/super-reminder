@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
   let submit_form_title = document.querySelector("#submit_form_title");
   let displayFormTodo = document.querySelector("#displayFormTodo");
   let displayRegisteredTodo = document.querySelector('#displayRegisteredTodo')
+  displayRegisteredTodo.setAttribute("class", "displayRegisteredTodo")
+  myList_form_title.setAttribute("class", "myList_form_title");
 
 
 
@@ -129,7 +131,7 @@ async function displayTodo(){
 
   for (const element of result) {
   
-    console.log(element.task["0"]["0"]["task"]);
+    console.log(element.task);
 
     let formDisplayTask = document.createElement("form");
     formDisplayTask.setAttribute("class", "formDisplayTask");
@@ -150,13 +152,13 @@ async function displayTodo(){
     registerTaskBtn.setAttribute("id", "registerTaskBtn");
     registerTaskBtn.setAttribute("name", "registerTaskBtn");
     
-
     let taskTodo = document.createElement("p");
     taskTodo.setAttribute("class", "taskTodo");
     taskTodo.setAttribute("id", "taskTodo");
     taskTodo.setAttribute("name", "taskTodo");
     taskTodo.setAttribute("type", "text");
     taskTodo.innerHTML = element.task["0"]["0"]["task"]
+
 
     let todoSelect = document.createElement("select");
     todoSelect.setAttribute("class", "todoSelect");
@@ -167,7 +169,6 @@ async function displayTodo(){
     let todoOption1 = document.createElement("option");
     let todoOption2 = document.createElement("option");
 
-    
     todoOption1.value = "1";
     todoOption1.textContent = "Low priority task";
     todoOption2.value = "2";
@@ -180,30 +181,62 @@ async function displayTodo(){
     todoSelect.appendChild(todoOption);
 
     displayRegisteredTodo.appendChild(titleP);
-    displayRegisteredTodo.appendChild(taskTodo);
+    // displayRegisteredTodo.appendChild(taskTodo);
 
-    displayRegisteredTodo.appendChild(todoSelect);
+    // displayRegisteredTodo.appendChild(todoSelect);
 
   let doneCheckbox = document.createElement("input");
   doneCheckbox.setAttribute("type", "checkbox");
+  doneCheckbox.setAttribute("id", "doneCheckbox")
   doneCheckbox.value = "Done";
   let doneLabel = document.createElement("label");
   doneLabel.textContent = "Done";
-  displayRegisteredTodo.appendChild(doneCheckbox);
-  displayRegisteredTodo.appendChild(doneLabel);
+  // displayRegisteredTodo.appendChild(doneCheckbox);
+  // displayRegisteredTodo.appendChild(doneLabel);
 
   let pendingCheckbox = document.createElement("input");
   pendingCheckbox.setAttribute("type", "checkbox");
+  pendingCheckbox.setAttribute("id", "pendingCheckbox")
   pendingCheckbox.value = "Pending";
+  pendingCheckbox.checked = true;
   let pendingLabel = document.createElement("label");
   pendingLabel.textContent = "Pending";
-  displayRegisteredTodo.appendChild(pendingCheckbox);
-  displayRegisteredTodo.appendChild(pendingLabel);
+  
+  // displayRegisteredTodo.appendChild(pendingCheckbox);
+  // displayRegisteredTodo.appendChild(pendingLabel);
 
+  let divTaskTodo = document.createElement('div');  
+  divTaskTodo.setAttribute("id", "divTaskTodo")
+  divTaskTodo.setAttribute("name", "divTaskTodo")
+  divTaskTodo.setAttribute("class", "divTaskTodo")
+  divTaskTodo.appendChild(taskTodo)
+  divTaskTodo.appendChild(pendingCheckbox)
+  divTaskTodo.appendChild(pendingLabel)
+  divTaskTodo.appendChild(doneCheckbox)
+  divTaskTodo.appendChild(doneLabel)
 
+  displayRegisteredTodo.appendChild(divTaskTodo)
+  
+
+  doneCheckbox.addEventListener("change", async function(e){
+    e.preventDefault();
+
+    if(doneCheckbox.checked){
+      pendingCheckbox.checked = false
+    }
+  
+  })
+  
+  pendingCheckbox.addEventListener("change", async function(e){
+    e.preventDefault();
+    
+    if (pendingCheckbox.checked) {
+      doneCheckbox.checked = false
+      
+    }
+  })
 
   }
-
 }
 
 displayTodo();
@@ -237,6 +270,9 @@ myList_form_title.addEventListener('submit' ,async function(e){
 //     e.preventDefault();
 
 //   })
+
+
+
 
 // -------------------------------------------------------------------------------
 // ---------------------------- addEventListener end------------------------------

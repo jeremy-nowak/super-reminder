@@ -1,15 +1,34 @@
 .container{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-
+    justify-content: space-evenly;
+    width: 100%;
     
 }
 
-.displayFormTodo{
-    width: 50%;
+.myList_form_title{
+    width: 75%;
 }
 
 .displayRegisteredTodo{
-    width: 50%;
+    width: 25%;
+
+}
+.divTaskTodo{
+display: flex;
+flex-direction: row;
+border: solid 1px black;
+border-radius: 4px;
+background-color: rgba(207, 179, 232, 0.632);
+
+}
+.taskTodo{
+    display: flex;
+    flex-direction: row;
+}
+.titleP{
+    border: solid 1px black;
+border-radius: 4px;
+
+    
 }
