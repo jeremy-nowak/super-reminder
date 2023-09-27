@@ -157,7 +157,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (element.task["0"]["0"]["state"] == 1) {
         doneCheckbox.checked = true;
-      }
+      } 
 
 
       let pendingCheckbox = document.createElement("input");
@@ -173,6 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
         pendingCheckbox.checked = true;
       }
 
+      
 
 
 
@@ -181,61 +182,46 @@ document.addEventListener("DOMContentLoaded", function () {
       divTaskTodo.setAttribute("name", "divTaskTodo");
       divTaskTodo.setAttribute("class", "divTaskTodo");
       divTaskTodo.appendChild(taskTodo);
-      divTaskTodo.appendChild(pendingCheckbox);
-      divTaskTodo.appendChild(pendingLabel);
+      // divTaskTodo.appendChild(pendingCheckbox);
+      // divTaskTodo.appendChild(pendingLabel);
       divTaskTodo.appendChild(doneCheckbox);
       divTaskTodo.appendChild(doneLabel);
 
       displayRegisteredTodo.appendChild(divTaskTodo);
 
+      let taskDone = document.createElement("div");
+      taskDone.setAttribute("id", "taskDone");
+      taskDone.setAttribute("name", "taskDone");
+      taskDone.setAttribute("class", "taskDone");
+
 
       doneCheckbox.addEventListener("change", async function (e) {
         e.preventDefault();
-
+      
         let idTask = e.target.getAttribute("data-id");
         let data = new FormData();
         data.append("idTask", idTask);
-        const response = await fetch("myList/stateDone", {
-          method: "POST",
-          body: data
-        });
-        const result = await response.text();
-            
-      });
-  
+      
+        if (e.target.checked) {
+          const response = await fetch("myList/stateDone", {
+            method: "POST",
+            body: data
+          });
+          const result = await response.text();
 
-      pendingCheckbox.addEventListener("change", async function (e) {
-        e.preventDefault();
+        } else {
+          const response = await fetch("myList/statePending", {
+            method: "POST",
+            body: data
+          });
+          const result = await response.text();
 
-        let idTask = e.target.getAttribute("data-id");
-        let data = new FormData();
-        data.append("idTask", idTask);
-        const response = await fetch("myList/statePending", {
-          method: "POST",
-          body: data
-        });
-        const result = await response.text();
+        }
 
       });
-
-
+      
     }
   }
-
-
-    
-
-// async function checkUncheckPending(){
-//   if(pendingCheckbox.checked == true){
-//     doneCheckbox.checked = false;
-//   }
-// }
-
-// async function checkUncheckDone(){
-//   if(doneCheckbox.checked = true){
-//     pendingCheckbox.checked = false;
-//   }
-// }
 
 
 
@@ -296,37 +282,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // -------------------------------------------------------------------------------
   // ---------------------------- addEventListener end------------------------------
-  // -------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // -------------------------------------------------------------------------------
-  // -------------------Delete task----------------------------------------------------
-  // -------------------------------------------------------------------------------
-
-  // async function deleteTask(e){
-  //   const taskId = e.target.getAttribute("data-id");
-  //   const response = await fetch("Todo/deleteTask",{
-  //     method: "DELETE",
-  // });
-
-  // if (response.ok){
-  //   e.target.closest(".formTask").remove();
-  // } else {
-  //   console.error("failed to delete task");
-  // }};
+  // -----------------------------------------------------------------------------
 });
 
 

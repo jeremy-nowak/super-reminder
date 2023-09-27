@@ -116,18 +116,29 @@ public function modelStatePending($idTask){
     return $update;
 }
 
+public function selectTaskDone($idTask){
+    $select = "SELECT * FROM task WHERE state = :state id_task = :id_task";
+    $select = $this->bdd->prepare($select);
+    $select->execute([
+        ":state" => 1,
+        ":id_task" => $idTask
+    ]);
+    $result = $select->fetch(PDO::FETCH_ASSOC);
+    return $result;
+}
 
-// public function sortTask($listName){
-//     $idList = $this->getIdList($listName)['id_list'];
 
-//     $stmt = "SELECT * FROM task WHERE id_list = :id_list ORDER BY priority ASC";
-//     $stmt = $this->bdd->prepare($stmt);
-//     $stmt->execute(array(
-//         'id_list' => $idList
-//     ));
-//     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-//     return $result;
-// }
+public function sortTask($listName){
+    $idList = $this->getIdList($listName)['id_list'];
+
+    $stmt = "SELECT * FROM task WHERE id_list = :id_list ORDER BY priority DESC";
+    $stmt = $this->bdd->prepare($stmt);
+    $stmt->execute(array(
+        'id_list' => $idList
+    ));
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
+}
 
 
 
