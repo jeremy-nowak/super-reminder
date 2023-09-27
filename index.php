@@ -76,7 +76,6 @@ $router->map('POST', '/myList/registerTitle', function(){
 
 
 $router->map('POST', '/myList/registerTask', function(){
-    var_dump($_POST);
     $task = $_POST["inputTodo"];
     $titleName = $_POST["listName"];
     $authController = new AuthController();
@@ -92,6 +91,32 @@ $router->map( 'GET', '/myList/displayTodos',function(){
     echo json_encode($result);
 
 }, "myListForm");
+
+
+
+$router->map( 'POST', '/myList/stateDone',function(){
+var_dump($_POST);
+    $idTask = $_POST["idTask"];
+    $authController = new AuthController();
+    $authController->controlStateDone($idTask);
+
+}, "myListstateDone");
+
+
+$router->map( 'POST', '/myList/statePending',function(){
+
+    $idTask = $_POST["idTask"];
+    $authController = new AuthController();
+    $authController->controlStatePending($idTask);
+
+}, "myLiStstatePending");
+
+
+
+
+
+
+
 
 
 
@@ -123,6 +148,3 @@ if (is_array($match) && is_callable($match['target'])) {
     // no route was matched
     header($_SERVER["SERVER_PROTOCOL"] . ' 404 Not Found');
 }
-
-
-?>

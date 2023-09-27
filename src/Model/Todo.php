@@ -95,8 +95,27 @@ public function displayTodos($id_user){
         array_push($result[$x]['task'], $select->fetchAll(PDO::FETCH_ASSOC));
     }
     return $result;
-    
 }
+
+public function modelStateDone($idTask){
+    $update = "UPDATE task SET `state` = :state WHERE id_task = :id_task";
+    $update = $this->bdd->prepare($update);
+    $update->execute([
+        ":state" => 1,
+        ":id_task" => $idTask
+    ]);
+    return $update; 
+}   
+public function modelStatePending($idTask){
+    $update = "UPDATE task SET `state` = :state WHERE id_task = :id_task";
+    $update = $this->bdd->prepare($update);
+    $update->execute([
+        ":state" => 0,
+        ":id_task" => $idTask
+    ]);
+    return $update;
+}
+
 
 // public function sortTask($listName){
 //     $idList = $this->getIdList($listName)['id_list'];
