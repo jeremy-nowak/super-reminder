@@ -98,6 +98,27 @@ public function displayTodos($id_user){
     
 }
 
+public function modelStateDone($idTask){
+    $idUser = $_SESSION["user"]["id_user"];
+    $update = "UPDATE task SET `state` = `:state` WHERE id_task = :id_task";
+    $update = $this->bdd->prepare($update);
+    $update->execute([
+        ":state" => "1",
+        ":id_task" => $idTask
+    ]);
+    return $update;
+}   
+public function modelStatePending(){
+    $idUser = $_SESSION["user"]["id_user"];
+    $update = "UPDATE task SET state = :value WHERE id = :id";
+    $update = $this->bdd->prepare($update);
+    $update->execute([
+        ":value" => 0,
+        ":id" => $idUser
+    ]);
+    return $update;
+}   
+
 // public function sortTask($listName){
 //     $idList = $this->getIdList($listName)['id_list'];
 
