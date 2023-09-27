@@ -1,5 +1,6 @@
 <?php
 require_once "header.php";
+var_dump($_POST);
 ?>
 
 
@@ -27,8 +28,16 @@ require_once "header.php";
                 <div id="displayFormTodo"></div>
             </form>
         </div>
+        <div id="tousLesTodos">
+            <h1>My list</h1>
+
         <div id="displayRegisteredTodo"> 
-            <h1>To do list display</h1>
+        </div> 
+
+        <div id="taskDone">
+            <h1>Task done</h1>
+
+        </div>
         </div>
     </div>
 

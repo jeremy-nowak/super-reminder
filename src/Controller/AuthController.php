@@ -218,10 +218,13 @@ class AuthController{
         return $result;
     }
 
-    public function controlStatePending(){
-
+    public function controlStatePending($idTask){
+        $idTask = htmlspecialchars($idTask);
+        $idTask = trim($idTask);
         $todo = new Todo();
-        $result = $todo->modelStatePending();
+        $result = $todo->modelStatePending($idTask);
+
+        return $result;
 
     }
 

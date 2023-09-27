@@ -94,18 +94,30 @@ $router->map( 'GET', '/myList/displayTodos',function(){
 
 
 
-$router->map( 'POST', '/myList/stateDone',function($idTask){
+$router->map( 'POST', '/myList/stateDone',function(){
+var_dump($_POST);
+    $idTask = $_POST["idTask"];
     $authController = new AuthController();
     $authController->controlStateDone($idTask);
 
 }, "myListstateDone");
 
 
-$router->map( 'GET', '/myList/statePending',function($id_task){
-    $authController = new AuthController();
-    $authController->controlStatePending();
+$router->map( 'POST', '/myList/statePending',function(){
 
-}, "myListstatePending");
+    $idTask = $_POST["idTask"];
+    $authController = new AuthController();
+    $authController->controlStatePending($idTask);
+
+}, "myLiStstatePending");
+
+
+
+
+
+
+
+
 
 
 

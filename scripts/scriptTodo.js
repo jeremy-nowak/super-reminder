@@ -66,30 +66,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     formTask.appendChild(todoSelect);
 
-    // let doneCheckbox = document.createElement("input");
-    // doneCheckbox.setAttribute("type", "checkbox");
-    // doneCheckbox.value = "Done";
-    // let doneLabel = document.createElement("label");
-    // doneLabel.textContent = "Done";
-    // // formTask.appendChild(doneCheckbox);Lignes qui ajoute la checkbox "done"
-    // // formTask.appendChild(doneLabel);
-
-    // let pendingCheckbox = document.createElement("input");
-    // pendingCheckbox.setAttribute("type", "checkbox");
-    // pendingCheckbox.value = "Pending";
-    // let pendingLabel = document.createElement("label");
-    // pendingLabel.textContent = "Pending";
-    // formTask.appendChild(pendingCheckbox);Lignes qui ajoute la checkbox "pending"
-    // formTask.appendChild(pendingLabel);
-
-    // let deleteButon = document.createElement("button");
-    // deleteButon.textContent = "Delete";
-    // deleteButon.setAttribute("class", "deleteButon");
-    // deleteButon.setAttribute("id", "deleteButon")
-    // deleteButon.setAttribute("name", "deleteButon")
-
-    // formTask.appendChild(deleteButon);
-
     displayFormTodo.appendChild(formTask);
     formTask.appendChild(registerTaskBtn);
 
@@ -118,7 +94,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const display = await fetch("myList/displayTodos");
     const result = await display.json();
-console.log(result);
+    console.log(result);
+    
     for (const element of result) {
       console.log(element.task);
 
@@ -169,9 +146,6 @@ console.log(result);
       todoSelect.appendChild(todoOption);
 
       displayRegisteredTodo.appendChild(titleP);
-      // displayRegisteredTodo.appendChild(taskTodo);
-
-      // displayRegisteredTodo.appendChild(todoSelect);
 
       let doneCheckbox = document.createElement("input");
       doneCheckbox.setAttribute("type", "checkbox");
@@ -180,19 +154,27 @@ console.log(result);
       doneCheckbox.value = "Done";
       let doneLabel = document.createElement("label");
       doneLabel.textContent = "Done";
-      // displayRegisteredTodo.appendChild(doneCheckbox);
-      // displayRegisteredTodo.appendChild(doneLabel);
+
+      if (element.task["0"]["0"]["state"] == 1) {
+        doneCheckbox.checked = true;
+      }
+
 
       let pendingCheckbox = document.createElement("input");
       pendingCheckbox.setAttribute("type", "checkbox");
       pendingCheckbox.setAttribute("id", "pendingCheckbox");
       pendingCheckbox.setAttribute("data-id", element.task["0"]["0"]["id_task"])
       pendingCheckbox.value = "Pending";
+
       let pendingLabel = document.createElement("label");
       pendingLabel.textContent = "Pending";
 
-      // displayRegisteredTodo.appendChild(pendingCheckbox);
-      // displayRegisteredTodo.appendChild(pendingLabel);
+      if(element.task["0"]["0"]["state"] == 0){
+        pendingCheckbox.checked = true;
+      }
+
+
+
 
       let divTaskTodo = document.createElement("div");
       divTaskTodo.setAttribute("id", "divTaskTodo");
@@ -207,32 +189,56 @@ console.log(result);
       displayRegisteredTodo.appendChild(divTaskTodo);
 
 
-      // Ajout des eventListener sur les selecteur "done" et "pending"
-      // Dans l'eventListener j'ai aouté la création d'un objet pour l'ajouter dans le formData mais j'ai encore une erreur... A voir pour la régler 
-
-
       doneCheckbox.addEventListener("change", async function (e) {
         e.preventDefault();
-        let idTask = e.target.getAttribute("data-id");
-        const idTaskObj = {"id_Task": idTask}
-        let data = new FormData(idTaskObj);
-        data.append("idTask", idTaskObj);      
-        const response = await fetch("myList/MyListCreate", {
-          method: "POST",
-          body: formData
-      });
-        const result = await response.text();
 
+        let idTask = e.target.getAttribute("data-id");
+        let data = new FormData();
+        data.append("idTask", idTask);
+        const response = await fetch("myList/stateDone", {
+          method: "POST",
+          body: data
+        });
+        const result = await response.text();
+            
       });
+  
 
       pendingCheckbox.addEventListener("change", async function (e) {
         e.preventDefault();
 
-        const response = await fetch("myList/statePending");
+        let idTask = e.target.getAttribute("data-id");
+        let data = new FormData();
+        data.append("idTask", idTask);
+        const response = await fetch("myList/statePending", {
+          method: "POST",
+          body: data
+        });
         const result = await response.text();
+
       });
+
+
     }
   }
+
+
+    
+
+// async function checkUncheckPending(){
+//   if(pendingCheckbox.checked == true){
+//     doneCheckbox.checked = false;
+//   }
+// }
+
+// async function checkUncheckDone(){
+//   if(doneCheckbox.checked = true){
+//     pendingCheckbox.checked = false;
+//   }
+// }
+
+
+
 
   displayTodo();
 
@@ -305,6 +311,7 @@ console.log(result);
 
 
 
+
   // -------------------------------------------------------------------------------
   // -------------------Delete task----------------------------------------------------
   // -------------------------------------------------------------------------------
@@ -321,3 +328,44 @@ console.log(result);
   //   console.error("failed to delete task");
   // }};
 });
+
+
+
+
+// async function getAllTodo(){
+
+//   const getAllTodo = await fetch("myList/displayTodos");
+//   const result = await getAllTodo.json();
+//   console.log(result[0]);
+//   console.log(result[0].task[0][0].task);
+
+//   const ul = document.createElement("ul");
+
+//   result.forEach(element => {
+
+//     const div = document.createElement("div");
+//     div.className = "div";
+    
+//     const li = document.createElement("li");
+//     const title = document.createElement("p");
+//     title.textContent = element.list_name;
+
+//     const task = document.createElement("p");
+//     task.textContent = result[0].task[0][0].task;
+
+
+//     const doneCheckbox = document.createElement("input");
+//     doneCheckbox.setAttribute("type", "checkbox");
+    
+//     li.appendChild(title);
+//     li.appendChild(task);
+//     li.appendChild(doneCheckbox);
+//     div.appendChild(li);
+//     ul.appendChild(div);
+
+    
+//   });
+//   displayRegisteredTodo.appendChild(ul);
+// } 
+// getAllTodo()
+

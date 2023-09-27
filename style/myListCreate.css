@@ -3,17 +3,15 @@
     flex-direction: row;
     justify-content: space-evenly;
     width: 100%;
-    
+    padding-top: 4%;
 }
 
 .myList_form_title{
     width: 75%;
 }
 
-.displayRegisteredTodo{
-    width: 25%;
 
-}
+
 .divTaskTodo{
 display: flex;
 flex-direction: row;
