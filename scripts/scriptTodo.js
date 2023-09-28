@@ -48,6 +48,8 @@ async function addList(form){
 
     tasks.forEach((task) => {
       let li_task = document.createElement("li");
+      li_task.classList.add("liTask");
+      
       li_task.innerHTML = task.task;
       ul_tasks.appendChild(li_task);
 
@@ -71,6 +73,7 @@ async function addList(form){
         div.classList.add("list");
 
         let title = document.createElement("h3");
+        title.classList.add("title");
         title.innerHTML = list.list_name;
         
         let btn_add = document.createElement("button");
@@ -79,6 +82,7 @@ async function addList(form){
         btn_add.innerHTML = "Ajouter";
         
         let btn_delete = document.createElement("button");
+        btn_delete.classList.add("btn_delete");
         btn_delete.innerHTML = "Supprimer";
 
         let ul_tasks = document.createElement("ul");
