@@ -92,10 +92,10 @@ document.addEventListener("DOMContentLoaded", function () {
   async function displayTodo() {
     displayRegisteredTodo.innerHTML = "";
 
-    const display = await fetch("myList/displayTodos");
+    const display = await fetch("myList/displayTask");
     const result = await display.json();
     console.log(result);
-    
+
     for (const element of result) {
       console.log(element.task);
 
@@ -112,133 +112,122 @@ document.addEventListener("DOMContentLoaded", function () {
       titleP.innerHTML = element.list_name;
       formDisplayTask.appendChild(titleP);
 
-      let registerTaskBtn = document.createElement("button");
-      registerTaskBtn.textContent = "Register Task";
-      registerTaskBtn.setAttribute("class", "registerTaskBtn");
-      registerTaskBtn.setAttribute("id", "registerTaskBtn");
-      registerTaskBtn.setAttribute("name", "registerTaskBtn");
+      // let registerTaskBtn = document.createElement("button");
+      // registerTaskBtn.textContent = "Register Task";
+      // registerTaskBtn.setAttribute("class", "registerTaskBtn");
+      // registerTaskBtn.setAttribute("id", "registerTaskBtn");
+      // registerTaskBtn.setAttribute("name", "registerTaskBtn");
+      // if (element.task[0] !== undefined) {
+        let taskTodo = document.createElement("p");
+        taskTodo.setAttribute("class", "taskTodo");
+        taskTodo.setAttribute("id", "taskTodo");
+        taskTodo.setAttribute("name", "taskTodo");
+        taskTodo.setAttribute("type", "text");
+        taskTodo.innerHTML = element.task["0"]["task"];
 
-      let taskTodo = document.createElement("p");
-      taskTodo.setAttribute("class", "taskTodo");
-      taskTodo.setAttribute("id", "taskTodo");
-      taskTodo.setAttribute("name", "taskTodo");
-      taskTodo.setAttribute("type", "text");
-      taskTodo.innerHTML = element.task["0"]["0"]["task"];
+        let todoSelect = document.createElement("select");
+        todoSelect.setAttribute("class", "todoSelect");
+        todoSelect.setAttribute("id", "todoSelect");
+        todoSelect.setAttribute("name", "todoSelect");
 
-      let todoSelect = document.createElement("select");
-      todoSelect.setAttribute("class", "todoSelect");
-      todoSelect.setAttribute("id", "todoSelect");
-      todoSelect.setAttribute("name", "todoSelect");
+        let todoOption = document.createElement("option");
+        let todoOption1 = document.createElement("option");
+        let todoOption2 = document.createElement("option");
 
-      let todoOption = document.createElement("option");
-      let todoOption1 = document.createElement("option");
-      let todoOption2 = document.createElement("option");
+        todoOption1.value = "1";
+        todoOption1.textContent = "Low priority task";
+        todoOption2.value = "2";
+        todoOption2.textContent = "Common task";
+        todoOption.value = "3";
+        todoOption.textContent = "Urgent task";
 
-      todoOption1.value = "1";
-      todoOption1.textContent = "Low priority task";
-      todoOption2.value = "2";
-      todoOption2.textContent = "Common task";
-      todoOption.value = "3";
-      todoOption.textContent = "Urgent task";
+        todoSelect.appendChild(todoOption1);
+        todoSelect.appendChild(todoOption2);
+        todoSelect.appendChild(todoOption);
 
-      todoSelect.appendChild(todoOption1);
-      todoSelect.appendChild(todoOption2);
-      todoSelect.appendChild(todoOption);
+        displayRegisteredTodo.appendChild(titleP);
 
-      displayRegisteredTodo.appendChild(titleP);
+        let doneCheckbox = document.createElement("input");
+        doneCheckbox.setAttribute("type", "checkbox");
+        doneCheckbox.setAttribute("id", "doneCheckbox");
+        doneCheckbox.setAttribute("data-id", element.task["0"]["id_task"]);
+        doneCheckbox.value = "Done";
+        let doneLabel = document.createElement("label");
+        doneLabel.textContent = "Done";
 
-      let doneCheckbox = document.createElement("input");
-      doneCheckbox.setAttribute("type", "checkbox");
-      doneCheckbox.setAttribute("id", "doneCheckbox");
-      doneCheckbox.setAttribute("data-id", element.task["0"]["0"]["id_task"])
-      doneCheckbox.value = "Done";
-      let doneLabel = document.createElement("label");
-      doneLabel.textContent = "Done";
+        if (element.task["0"]["state"] == 1) {
+          doneCheckbox.checked = true;
+        }
 
-      if (element.task["0"]["0"]["state"] == 1) {
-        doneCheckbox.checked = true;
-      }
+        let pendingCheckbox = document.createElement("input");
+        pendingCheckbox.setAttribute("type", "checkbox");
+        pendingCheckbox.setAttribute("id", "pendingCheckbox");
+        pendingCheckbox.setAttribute(
+          "data-id",
+          element.task["0"]["id_task"]
+        );
+        pendingCheckbox.value = "Pending";
 
+        let pendingLabel = document.createElement("label");
+        pendingLabel.textContent = "Pending";
 
-      let pendingCheckbox = document.createElement("input");
-      pendingCheckbox.setAttribute("type", "checkbox");
-      pendingCheckbox.setAttribute("id", "pendingCheckbox");
-      pendingCheckbox.setAttribute("data-id", element.task["0"]["0"]["id_task"])
-      pendingCheckbox.value = "Pending";
+        if (element.task["0"]["state"] == 0) {
+          pendingCheckbox.checked = true;
+        }
 
-      let pendingLabel = document.createElement("label");
-      pendingLabel.textContent = "Pending";
+        let divTaskTodo = document.createElement("div");
+        divTaskTodo.setAttribute("id", "divTaskTodo");
+        divTaskTodo.setAttribute("name", "divTaskTodo");
+        divTaskTodo.setAttribute("class", "divTaskTodo");
 
-      if(element.task["0"]["0"]["state"] == 0){
-        pendingCheckbox.checked = true;
-      }
+        divTaskTodo.appendChild(taskTodo);
 
+        divTaskTodo.appendChild(pendingCheckbox);
+        divTaskTodo.appendChild(pendingLabel);
+        divTaskTodo.appendChild(doneCheckbox);
+        divTaskTodo.appendChild(doneLabel);
 
+        displayRegisteredTodo.appendChild(divTaskTodo);
 
-
-      let divTaskTodo = document.createElement("div");
-      divTaskTodo.setAttribute("id", "divTaskTodo");
-      divTaskTodo.setAttribute("name", "divTaskTodo");
-      divTaskTodo.setAttribute("class", "divTaskTodo");
-      divTaskTodo.appendChild(taskTodo);
-      divTaskTodo.appendChild(pendingCheckbox);
-      divTaskTodo.appendChild(pendingLabel);
-      divTaskTodo.appendChild(doneCheckbox);
-      divTaskTodo.appendChild(doneLabel);
-
-      displayRegisteredTodo.appendChild(divTaskTodo);
-
-
-      doneCheckbox.addEventListener("change", async function (e) {
-        e.preventDefault();
-
-        let idTask = e.target.getAttribute("data-id");
-        let data = new FormData();
-        data.append("idTask", idTask);
-        const response = await fetch("myList/stateDone", {
-          method: "POST",
-          body: data
-        });
-        const result = await response.text();
-            
-      });
+        doneCheckbox.addEventListener("change", async function (e) {
+          e.preventDefault();
   
-
-      pendingCheckbox.addEventListener("change", async function (e) {
-        e.preventDefault();
-
-        let idTask = e.target.getAttribute("data-id");
-        let data = new FormData();
-        data.append("idTask", idTask);
-        const response = await fetch("myList/statePending", {
-          method: "POST",
-          body: data
+          let idTask = e.target.getAttribute("data-id");
+          let data = new FormData();
+          data.append("idTask", idTask);
+          const response = await fetch("myList/stateDone", {
+            method: "POST",
+            body: data,
+          });
+          const result = await response.text();
         });
-        const result = await response.text();
-
-      });
-
-
+  
+        pendingCheckbox.addEventListener("change", async function (e) {
+          e.preventDefault();
+  
+          let idTask = e.target.getAttribute("data-id");
+          let data = new FormData();
+          data.append("idTask", idTask);
+          const response = await fetch("myList/statePending", {
+            method: "POST",
+            body: data,
+          });
+          const result = await response.text();
+        });
     }
   }
 
+  // async function checkUncheckPending(){
+  //   if(pendingCheckbox.checked == true){
+  //     doneCheckbox.checked = false;
+  //   }
+  // }
 
-    
-
-// async function checkUncheckPending(){
-//   if(pendingCheckbox.checked == true){
-//     doneCheckbox.checked = false;
-//   }
-// }
-
-// async function checkUncheckDone(){
-//   if(doneCheckbox.checked = true){
-//     pendingCheckbox.checked = false;
-//   }
-// }
-
-
-
+  // async function checkUncheckDone(){
+  //   if(doneCheckbox.checked = true){
+  //     pendingCheckbox.checked = false;
+  //   }
+  // }
 
   displayTodo();
 
@@ -246,27 +235,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // ------------------------------Function end-------------------------------------------
   // -------------------------------------------------------------------------------------
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   // -------------------------------------------------------------------------------
   // ---------------------------- addEventListener start----------------------------
   // -------------------------------------------------------------------------------
-
-
-
-
 
   myList_form_title.addEventListener("submit", async function (e) {
     e.preventDefault();
@@ -290,27 +261,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   //   })
 
-
-
-  
-
   // -------------------------------------------------------------------------------
   // ---------------------------- addEventListener end------------------------------
   // -------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   // -------------------------------------------------------------------------------
   // -------------------Delete task----------------------------------------------------
@@ -329,9 +282,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // }};
 });
 
-
-
-
 // async function getAllTodo(){
 
 //   const getAllTodo = await fetch("myList/displayTodos");
@@ -343,9 +293,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //   result.forEach(element => {
 
-//     const div = document.createElement("div");
-//     div.className = "div";
-    
+//     const div = document.createElement("// async function checkUncheckPending(){
+//   if(pendingCheckbox.checked == true){
+//     doneCheckbox.checked = false;
+//   }
+// }
+
+// async function checkUncheckDone(){
+//   if(doneCheckbox.checked = true){
+//     pendingCheckbox.checked = false;
+//   }
+// }
 //     const li = document.createElement("li");
 //     const title = document.createElement("p");
 //     title.textContent = element.list_name;
@@ -353,19 +311,16 @@ document.addEventListener("DOMContentLoaded", function () {
 //     const task = document.createElement("p");
 //     task.textContent = result[0].task[0][0].task;
 
-
 //     const doneCheckbox = document.createElement("input");
 //     doneCheckbox.setAttribute("type", "checkbox");
-    
+
 //     li.appendChild(title);
 //     li.appendChild(task);
 //     li.appendChild(doneCheckbox);
 //     div.appendChild(li);
 //     ul.appendChild(div);
 
-    
 //   });
 //   displayRegisteredTodo.appendChild(ul);
-// } 
+// }
 // getAllTodo()
-

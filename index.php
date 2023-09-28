@@ -8,6 +8,7 @@ use App\class;
 use App\model;
 use App\view;
 use App\Controller\AuthController;
+use App\Controller\TodoController;
 use App\Model\User;
 
 $router->map( 'GET', '/', function(){
@@ -85,12 +86,20 @@ $router->map('POST', '/myList/registerTask', function(){
 
 
 $router->map( 'GET', '/myList/displayTodos',function(){
-    $authController = new AuthController();
-    $result = $authController->displayTodos();
-
+    $todoController = new TodoController();
+    $result = $todoController->controllerDisplayTodos();
     echo json_encode($result);
 
 }, "myListForm");
+
+
+
+$router->map( 'GET', '/myList/displayTask',function(){
+    $todoController = new TodoController();
+    $resultTask = $todoController->controllerDisplayTask();
+    echo json_encode($resultTask);
+
+}, "myListTask");
 
 
 
@@ -110,6 +119,11 @@ $router->map( 'POST', '/myList/statePending',function(){
     $authController->controlStatePending($idTask);
 
 }, "myLiStstatePending");
+
+
+
+
+
 
 
 

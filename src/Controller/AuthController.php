@@ -72,64 +72,64 @@ class AuthController{
     // }
 
 
-    public function registerListName($listName){
-        $userId = $_SESSION["user"]["id_user"];
-        $listName = htmlspecialchars($listName);
-        $userId = htmlspecialchars($userId);
-        $userId = trim($userId);
-        $listName = trim($listName);
+    // public function registerListName($listName){
+    //     $userId = $_SESSION["user"]["id_user"];
+    //     $listName = htmlspecialchars($listName);
+    //     $userId = htmlspecialchars($userId);
+    //     $userId = trim($userId);
+    //     $listName = trim($listName);
     
-        var_dump($_POST);
-        // Vérifiez si l'utilisateur existe déjà
-        if ($this->checkIdUser($userId) === "existing") {
-            $todo = new Todo();
-            // var_dump("Vérifiez si la liste de tâches existe déjà");
-            $existingList = $todo->checkListName($listName);
+    //     var_dump($_POST);
+    //     // Vérifiez si l'utilisateur existe déjà
+    //     if ($this->checkIdUser($userId) === "existing") {
+    //         $todo = new Todo();
+    //         // var_dump("Vérifiez si la liste de tâches existe déjà");
+    //         $existingList = $todo->checkListName($listName);
             
-            if ($existingList) {
-                // var_dump("La liste de tâches existe déjà, récupérez l'ID");
-                $_SESSION['id_list_name'] = $existingList['id_list_name'];
+    //         if ($existingList) {
+    //             // var_dump("La liste de tâches existe déjà, récupérez l'ID");
+    //             $_SESSION['id_list_name'] = $existingList['id_list_name'];
                 
-            } else {
+    //         } else {
                 
-                // var_dump("La liste de tâches n'existe pas, créez-la");
-                $todo->registerListName($listName, $userId);
-            }
-        }
-    }
+    //             // var_dump("La liste de tâches n'existe pas, créez-la");
+    //             $todo->registerListName($listName, $userId);
+    //         }
+    //     }
+    // }
     
 
-    public function registerTask($task, $titleName){
+    // public function registerTask($task, $titleName){
         
-        $userId = $_SESSION["user"]["id_user"];
-        $priority = $_POST["todoSelect"];
+    //     $userId = $_SESSION["user"]["id_user"];
+    //     $priority = $_POST["todoSelect"];
 
-        $userId = htmlspecialchars($userId);
-        $titleName = htmlspecialchars($titleName);
-        $task = htmlspecialchars($task);
-        $priority = htmlspecialchars($priority);
+    //     $userId = htmlspecialchars($userId);
+    //     $titleName = htmlspecialchars($titleName);
+    //     $task = htmlspecialchars($task);
+    //     $priority = htmlspecialchars($priority);
 
-        $userId = trim($userId);
-        $titleName = trim($titleName);
-        $task = trim($task);
-        $priority = trim($priority);
+    //     $userId = trim($userId);
+    //     $titleName = trim($titleName);
+    //     $task = trim($task);
+    //     $priority = trim($priority);
 
-        if (isset($_SESSION) && $this->checkIdUser($userId) === "existing") {
-            $todo = new Todo();
-            if ($todoInfo = $todo->checkListName($titleName)) {
-                $listId = $todoInfo["id_list_name"];
-                $todo->registerTask( $listId, $task, $priority);
-            }
-        }
-    }
+    //     if (isset($_SESSION) && $this->checkIdUser($userId) === "existing") {
+    //         $todo = new Todo();
+    //         if ($todoInfo = $todo->checkListName($titleName)) {
+    //             $listId = $todoInfo["id_list_name"];
+    //             $todo->registerTask( $listId, $task, $priority);
+    //         }
+    //     }
+    // }
 
     
-    public function checkListName($listName){
-        $listName = htmlspecialchars($listName);
-        $listName = trim($listName);
-        $todo = new Todo();
-        return $todo->checkListName($listName);
-    }
+    // public function checkListName($listName){
+    //     $listName = htmlspecialchars($listName);
+    //     $listName = trim($listName);
+    //     $todo = new Todo();
+    //     return $todo->checkListName($listName);
+    // }
 
 
     public function checkIdUser(){
@@ -196,39 +196,37 @@ class AuthController{
     }
 
 
-    public function displayTodos(){
+    // public function displayTodos(){
 
-        $id_user = $_SESSION["user"]["id_user"];
-        $todo = new Todo();
-        $result = $todo->displayTodos($id_user);
+    //     $id_user = $_SESSION["user"]["id_user"];
+    //     $todo = new Todo();
+    //     $result = $todo->modelDisplayTodos($id_user);
 
-        return $result;
+    //     return $result;
 
 
 }
 
-    public function controlStateDone($idTask){
+    // public function controlStateDone($idTask){
 
-        $idTask = htmlspecialchars($idTask);
-        $idTask = trim($idTask);
+    //     $idTask = htmlspecialchars($idTask);
+    //     $idTask = trim($idTask);
 
-        $todo = new Todo();
-        $result = $todo->modelStateDone($idTask);
+    //     $todo = new Todo();
+    //     $result = $todo->modelStateDone($idTask);
         
-        return $result;
-    }
+    //     return $result;
+    // }
 
-    public function controlStatePending($idTask){
-        $idTask = htmlspecialchars($idTask);
-        $idTask = trim($idTask);
-        $todo = new Todo();
-        $result = $todo->modelStatePending($idTask);
+    // public function controlStatePending($idTask){
+    //     $idTask = htmlspecialchars($idTask);
+    //     $idTask = trim($idTask);
+    //     $todo = new Todo();
+    //     $result = $todo->modelStatePending($idTask);
 
-        return $result;
+    //     return $result;
 
-    }
-
-
+    // }
 
 
 
@@ -245,7 +243,9 @@ class AuthController{
 
 
 
-    }
+
+
+    
 
 
 
