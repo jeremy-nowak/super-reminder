@@ -16,187 +16,89 @@ public function checkListName($titleName){
     echo $result;
 }
 
-public function modelDisplayTitle($id_user){
+public function modelDisplayLists($id_user){
 
-    $select = "SELECT * FROM list_name WHERE id_user = :id_user";
+    $select = "SELECT * FROM list_name WHERE id_user = :id_user ORDER BY date_list_name DESC"; 
     $select = $this->bdd->prepare($select);
     $select->execute([
         ":id_user" => $id_user
     ]);
 
     $result = $select->fetchAll(PDO::FETCH_ASSOC);
-    return $result;
+    echo json_encode($result);
 }
 
-public function modelDisplayTask(){
+// public function modelDisplayTask(){
 
-    $id_user = $_SESSION["user"]["id_user"];
+//     $id_user = $_SESSION["user"]["id_user"];
 
-    $modelDisplayTitle = new Todo();
-    $modelDisplayTitle->modelDisplayTitle($id_user);
+//     $modelDisplayTitle = new Todo();
+//     $modelDisplayTitle->modelDisplayTitle($id_user);
 
-    for ($i=0; isset($modelDisplayTitle) < $i; $i++) { 
+//     for ($i=0; isset($modelDisplayTitle) < $i; $i++) { 
 
-        $select = "SELECT * FROM task WHERE id_list_name = :id_list_name";
-        $select = $this->bdd->prepare($select);
-        $select->execute([
-            ":id_list_name" => $modelDisplayTitle[$i]["id_list_name"]
-        ]);
+//         $select = "SELECT * FROM task WHERE id_list_name = :id_list_name";
+//         $select = $this->bdd->prepare($select);
+//         $select->execute([
+//             ":id_list_name" => $modelDisplayTitle[$i]["id_list_name"]
+//         ]);
     
-        $resultTask = $select->fetchAll(PDO::FETCH_ASSOC);
-        return $resultTask;
+//         $resultTask = $select->fetchAll(PDO::FETCH_ASSOC);
+//         return $resultTask;
+//     }
+// }
+
+public function insertList ($titleName, $id_user){
+
+    $insert = "INSERT INTO list_name (list_name, id_user) VALUES (:list_name, :id_user)";
+    $insert = $this->bdd->prepare($insert);
+    $insert->execute([
+        ":list_name" => $titleName,
+        ":id_user" => $id_user
+    ]);
+
+    if ($insert) {
+        echo "true";
+    } else {
+        echo "false";
     }
+
+
+}
+public function insertTask($task, $list_id, $priority){
+
+    $insert = "INSERT INTO task (task, id_list, priority) VALUES (:task, :id_list, :priority)";
+    $insert = $this->bdd->prepare($insert);
+    $insert->execute([
+        ":task" => $task,
+        ":id_list" => $list_id,
+        ":priority" => $priority
+    ]);
+
+    if ($insert) {
+        echo "true";
+    } else {
+        echo "false";
+    }
+
+
 }
 
+public function selectTasks($id_list){
 
+    $select = "SELECT * FROM task WHERE id_list = :id_list ORDER BY priority DESC";
+    $select = $this->bdd->prepare($select);
+    $select->execute([
+        ":id_list" => $id_list
+    ]);
+
+    $resultTask = $select->fetchAll(PDO::FETCH_ASSOC);
+
+    return $resultTask;
+
+}
 
  
     
 
-
-// public function registerListNameWithId($titleName, $userId, $list_id){
-    
-//         $stmt = "INSERT INTO `list_name` (id_user, list_name) VALUES (:id_user, :list_name) WHERE id_list_name = $list_id ";
-//         $stmt = $this->bdd->prepare($stmt);
-//         $stmt->execute([
-//             'id_user' => $userId,
-//             'list_name' => $titleName
-//         ]); 
-//     }
-
-//     public function registerListName($listName, $userId){
-
-//         $stmt = "INSERT INTO `list_name` (id_user, list_name) VALUES (:id_user, :list_name)";
-//         $stmt = $this->bdd->prepare($stmt);
-//         $stmt->execute([
-//             'list_name' => $listName,
-//             'id_user' => $userId
-//         ]); 
-//         if ($stmt) {
-//             $_SESSION['id_list_name'] = $this->bdd->lastInsertId();
-//             echo "registerListNameOk";
-//         }
-//     }
-
-
-    
-
-//     public function getIdList($titleName){
-
-
-//     $statement = "SELECT id_list_name FROM `list_name` WHERE list_name = :list_name";
-//     $statement = $this->bdd->prepare($statement);
-//     $statement->execute([
-//         'list_name' => $titleName
-//     ]);
-//     $result = $statement->fetch(PDO::FETCH_ASSOC);
-//     return $result;
-
-// }
-
-// public function registerTask($listId){
-//     $stmt = "INSERT INTO `task` (`id_list`, `task`, `priority`, `date_task`) VALUES (:id_list, :task, :priority, NOW())";
-//     $stmt = $this->bdd->prepare($stmt);
-//     $stmt->execute([
-//         'id_list' => $listId,
-//         'task' => $_POST['inputTodo'],
-//         'priority' => $_POST['todoSelect']
-//     ]);
-//     if ($stmt) {
-//         echo "registerTaskOk";
-//     }
-//     else{
-//         echo "registerTaskNotOk";
-//     }
-// }
-
-
-// public function displayTodos($id_user){
-
-//     $select = "SELECT * FROM list_name WHERE id_user = :id_user";
-//     $select = $this->bdd->prepare($select);
-//     $select->execute([
-//         ":id_user" => $id_user
-//     ]);
-//     $result = $select->fetchAll(PDO::FETCH_ASSOC);
-    
-//     for($x = 0; isset($result[$x]); $x++){
-//         $result[$x]['task'] = [];
-//         $id_list = $result[$x]['id_list_name'];
-//         $select = "SELECT * FROM task WHERE id_list = :id_list";
-//         $select = $this->bdd->prepare($select);
-//         $select->execute([
-//             ":id_list" => $id_list
-//         ]);
-//         $resultTasks = $select->fetchAll(PDO::FETCH_ASSOC);
-//         if(!$resultTasks){
-//             // array_push($result[$x]['task'], "pas de tache");
-//             $result[$x]['task'][0]['task'] = "pas de tâche";
-//         }
-//         else {
-//             $result[$x]['task'] = $resultTasks;
-//         }
-//     }
-//     return $result;
-// }
-
-// public function modelStateDone($idTask){
-//     $update = "UPDATE task SET `state` = :state WHERE id_task = :id_task";
-//     $update = $this->bdd->prepare($update);
-//     $update->execute([
-//         ":state" => 1,
-//         ":id_task" => $idTask
-//     ]);
-//     return $update; 
-// }   
-// public function modelStatePending($idTask){
-//     $update = "UPDATE task SET `state` = :state WHERE id_task = :id_task";
-//     $update = $this->bdd->prepare($update);
-//     $update->execute([
-//         ":state" => 0,
-//         ":id_task" => $idTask
-//     ]);
-//     return $update;
-// }
-
-
-// public function sortTask($listName){
-//     $idList = $this->getIdList($listName)['id_list'];
-
-//     $stmt = "SELECT * FROM task WHERE id_list = :id_list ORDER BY priority ASC";
-//     $stmt = $this->bdd->prepare($stmt);
-//     $stmt->execute(array(
-//         'id_list' => $idList
-//     ));
-//     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-//     return $result;
-// }
-
-
-
-
-// public function registerListBdd($listName, $task, $priority){
-//     $sql = "INSERT INTO `task` (`list_name`, `task`, `priority`, `start_date`) VALUES (:list_name, :task, :priority, NOW())";
-//     $prepare = $this->bdd->prepare($sql);
-//     $prepare->execute([':list_name' => $listName, ':task' => $task, ':priority' => $priority]);
-//             if ($prepare) {
-//         echo "registerListTaskOk";
-//         return "registerListTaskOk";
-//     }
-//     else{
-//         echo "registerListTasNotOk";
-//         return "registerListTasNotOk";
-//     }
-
-//     // Creer cette fonction
-// }
-
-
-// public function deleteTask($id){
-//     $stmt = "DELETE FROM `task` WHERE id_task = :id_task";
-//     $stmt = $this->bdd->prepare($stmt);
-//     $stmt->execute(array(
-//         'id_task' => $id
-//     ));
-// }
 }

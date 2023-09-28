@@ -31,7 +31,7 @@ var_dump($_SESSION);
         </div>
         <div id="todos">
             <h1>My list</h1>
-        <div id="displayRegisteredTodo"> 
+        <div id="displayLists"> 
         </div> 
 
         <div id="taskDone">
