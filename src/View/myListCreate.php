@@ -29,7 +29,7 @@ var_dump($_SESSION);
                 <div id="displayFormTodo"></div>
             </form>
         </div>
-        <div id="todos">
+        <div id="todos" class="todos">
             <h1>My list</h1>
         <div id="displayLists"> 
         </div> 

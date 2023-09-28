@@ -10,15 +10,12 @@ if (!isset($_SESSION)) {
 
 class TodoController{
 
-
     public function controllerDisplayLists($id_user){
-
         $id_user = htmlspecialchars($id_user);
         $id_user = trim($id_user);
 
         $todo = new Todo();
-        $todo->modelDisplayLists($id_user);
-
+        $todo->displayLists($id_user);
     }
 
 

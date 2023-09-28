@@ -95,7 +95,6 @@ public function selectTasks($id_list){
     $resultTask = $select->fetchAll(PDO::FETCH_ASSOC);
 
     return $resultTask;
-
 }
 
  
