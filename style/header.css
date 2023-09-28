@@ -34,7 +34,7 @@ z-index: -1;
 }
 }
 
-ul {
+.top_nav ul {
     display: flex;
     justify-content: space-evenly;
     flex-direction: row;
@@ -44,7 +44,7 @@ ul {
     padding: 0 15px;
 }
 
-li {
+.top_nav li {
     position: relative;
     margin: 20px;
     height: 100%;
@@ -59,7 +59,7 @@ li {
     font-size: 1.3rem;
 }
 
-li:before {
+.top_nav li:before {
     content: "";
     position: absolute;
     height: 33.33%;
@@ -71,7 +71,7 @@ li:before {
     transition: var(--transition);
 }
 
-li:after {
+.top_nav li:after {
     content: "";
     position: absolute;
     width: 0;
@@ -82,7 +82,7 @@ li:after {
     transition: var(--transition);
 }
 
-a:before {
+.top_nav a:before {
     position:absolute;
     content: "";
     width: 0;
@@ -91,9 +91,9 @@ a:before {
     transition: var(--transition);
 }
 
-li:hover:before,
-li:hover:after,
-li:hover a:before{
+.top_nav li:hover:before,
+.top_nav li:hover:after,
+.top_nav li:hover a:before{
     width:100%
 }
 
