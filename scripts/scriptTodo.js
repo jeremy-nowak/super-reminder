@@ -102,6 +102,7 @@ async function addList(form){
         
         let btn_delete = document.createElement("button");
         btn_delete.classList.add("btn_delete");
+        btn_delete.setAttribute("id", "btn_delete");
         btn_delete.innerHTML = "Delete";
 
         let ul_tasks = document.createElement("ul");
@@ -131,11 +132,24 @@ async function addList(form){
             
 
             div.appendChild(form);
+            
             form.addEventListener("submit", function(e){
               e.preventDefault();
               addTask(form);
             })
 
+          })
+
+          btn_delete.addEventListener("click", function(){
+            let data = new FormData();
+            data.append("id_list_name", list.id_list_name);
+            data.append("delete", "true");
+
+            $request = fetch("myList/deleteList", {
+              method: "POST",
+              body: data,
+            })
+            getLists();
           })
     });
   }

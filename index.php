@@ -97,6 +97,16 @@ $router->map('POST', '/myList/registerTask', function(){
     
 }, "registerTask" );
 
+$router->map('POST', '/myList/deleteList', function(){
+
+    $id_user = $_SESSION["user"]["id_user"];
+    $id_list_name = $_POST["id_list_name"];
+    
+    $todo = new TodoController();
+    $todo->deleteList($id_user, $id_list_name); 
+
+}, "deleteList");
+
 
 // $router->map( 'GET', '/myList/displayTodos',function(){
 //     $todoController = new TodoController();

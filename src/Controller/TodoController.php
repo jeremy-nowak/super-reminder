@@ -63,8 +63,18 @@ class TodoController{
         $resultTask = $todo->selectTasks($id_list);
 
         return $resultTask;
+    }
+
+    public function deleteList($id_user, $id_list){
+
+        $id_user = htmlspecialchars($id_user);
+        $id_user = trim($id_user);
 
 
+        
+
+        $todo = new Todo();
+        $todo->deleteList($id_user, $id_list);
     }
     
 
