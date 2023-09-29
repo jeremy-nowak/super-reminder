@@ -103,8 +103,6 @@ public function deleteList($id_user, $id_list){
         ":id_list" => $id_list
     ]);
 
-
-
     $delete = "DELETE FROM list_name WHERE id_list_name = :id_list_name AND id_user = :id_user";
     $delete = $this->bdd->prepare($delete);
     $delete->execute([
@@ -118,8 +116,17 @@ public function deleteList($id_user, $id_list){
     } else {
         echo "false";
     }
+}
 
+public function updateStateTask($idTask, $state){
 
+    $update = "UPDATE task SET state = :state WHERE id_task = :id_task";
+    $update = $this->bdd->prepare($update);
+    $update->execute([
+        ":state" => $state,
+        ":id_task" => $idTask
+    ]);
+    echo "updateOK";
 }
 
  

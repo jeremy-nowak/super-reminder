@@ -29,7 +29,7 @@ class TodoController{
     // }
 
 
-    public function registerlistName($titleName, $id_user){
+    public function ControllerRegisterlistName($titleName, $id_user){
 
         $titleName = htmlspecialchars($titleName);
         $titleName = trim($titleName);
@@ -41,7 +41,7 @@ class TodoController{
     }
 
 
-    public function registerTask($task, $listId, $priority){
+    public function ControllerRegisterTask($task, $listId, $priority){
 
         $priority = htmlspecialchars($priority);
         $priority = trim($priority);
@@ -54,7 +54,7 @@ class TodoController{
         $todo->insertTask($task, $listId, $priority);
     }
 
-    public function displayTasks($id_list){
+    public function ControllerDisplayTasks($id_list){
 
         $id_list = htmlspecialchars($id_list);
         $id_list = trim($id_list);
@@ -65,18 +65,27 @@ class TodoController{
         return $resultTask;
     }
 
-    public function deleteList($id_user, $id_list){
+    public function ControllerDeleteList($id_user, $id_list){
 
         $id_user = htmlspecialchars($id_user);
         $id_user = trim($id_user);
-
-
-        
 
         $todo = new Todo();
         $todo->deleteList($id_user, $id_list);
     }
     
+    public function ControllerUpdateStateTask($idTask, $state){
+
+        $idTask = trim($idTask);
+        $state = trim($state);
+        
+        $idTask = htmlspecialchars($idTask);
+        $state = htmlspecialchars($state);
+
+        $todo = new Todo();
+        $todo->updateStateTask($idTask, $state);
+
+    }
 
 
 }
