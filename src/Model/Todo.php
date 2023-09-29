@@ -16,7 +16,7 @@ public function checkListName($titleName){
     echo $result;
 }
 
-public function modelDisplayLists($id_user){
+public function displayLists($id_user){
 
     $select = "SELECT * FROM list_name WHERE id_user = :id_user ORDER BY date_list_name DESC"; 
     $select = $this->bdd->prepare($select);
@@ -62,8 +62,6 @@ public function insertList ($titleName, $id_user){
     } else {
         echo "false";
     }
-
-
 }
 public function insertTask($task, $list_id, $priority){
 
@@ -80,8 +78,6 @@ public function insertTask($task, $list_id, $priority){
     } else {
         echo "false";
     }
-
-
 }
 
 public function selectTasks($id_list){
@@ -95,6 +91,35 @@ public function selectTasks($id_list){
     $resultTask = $select->fetchAll(PDO::FETCH_ASSOC);
 
     return $resultTask;
+}
+
+
+public function deleteList($id_user, $id_list){
+
+    $delete = "DELETE FROM task WHERE id_list = :id_list";
+    $delete = $this->bdd->prepare($delete);
+    $delete->execute([
+
+        ":id_list" => $id_list
+    ]);
+
+
+
+    $delete = "DELETE FROM list_name WHERE id_list_name = :id_list_name AND id_user = :id_user";
+    $delete = $this->bdd->prepare($delete);
+    $delete->execute([
+
+        ":id_list_name" => $id_list,
+        ":id_user" => $id_user
+    ]);
+    
+    if ($delete) {
+        echo "true";
+    } else {
+        echo "false";
+    }
+
+
 }
 
  
