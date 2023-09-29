@@ -39,7 +39,6 @@ async function addList(form){
 
 
   async function getTasks(id_list_name, ul_tasks){
-
     let response = await fetch('myList/getTasks?id_list='+ id_list_name
   );
     let tasks = await response.json();
@@ -64,19 +63,29 @@ async function addList(form){
       li_task.appendChild(divCheckbox);
       ul_tasks.appendChild(li_task);
 
-      // checkbox.addEventListener("click", function(){
-      //   if(checkbox.checked){
+      checkbox.addEventListener("click", function(){
+        if(checkbox.checked){
 
-      //     let data = new FormData();
-      //     data.append("id_task", task.id_task);
-      //     data.append("done", "true");
+          let data = new FormData();
+          data.append("id_task", task.id_task);
+          data.append("state", "1");
 
-      //     $request = fetch("myList/updateTask", {
-      //       method: "POST",
-      //       body: data,
-      //     })
-      //   }
-      // })
+          $request = fetch("myList/updateTask", {
+            method: "POST",
+            body: data,
+          })
+        }
+        else{
+          let data = new FormData();
+          data.append("id_task", task.id_task);
+          data.append("state", "0");
+
+          $request = fetch("myList/updateTask", {
+            method: "POST",
+            body: data,
+          })
+        }
+      })
     })
   }
 

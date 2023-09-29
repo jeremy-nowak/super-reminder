@@ -30,7 +30,7 @@ $router->map( 'GET', '/profile', function(){
 $router->map( 'POST', '/register/verifLog', function(){
     $authController = new AuthController();
     $login = $_POST["login"];
-    $authController->checkLoginAuth($login);
+    $authController->ControllerCheckLoginAuth($login);
 }, "checkLogin");
 
 $router->map( 'POST', '/register/registerValidate', function(){
@@ -38,7 +38,7 @@ $router->map( 'POST', '/register/registerValidate', function(){
     $login = $_POST["login"];
     $password = $_POST["password"];
 
-    $authModel->register($login, $password);
+    $authModel->ControllerRegister($login, $password);
 }, "home");
 
 $router->map('GET', '/logout', function () {
@@ -64,6 +64,15 @@ $router->map( 'GET', '/myList',function(){
 }, "myList");
 
 
+// $router->map( 'GET', '/myList/getLists',function(){
+
+//     $id_user = $_SESSION["user"]["id_user"];
+//     $todoController = new TodoController();
+//     $todoController->controllerDisplayLists($id_user);
+
+// }, "myListTitle");
+
+
 $router->map( 'GET', '/myList/getLists',function(){
 
     $id_user = $_SESSION["user"]["id_user"];
@@ -71,6 +80,7 @@ $router->map( 'GET', '/myList/getLists',function(){
     $todoController->controllerDisplayLists($id_user);
 
 }, "myListTitle");
+
 
 $router->map( 'GET', '/myListCreate',function(){
     require_once "src/View/myListCreate.php";
@@ -81,7 +91,7 @@ $router->map('POST', '/myList/registerTitle', function(){
     $id_user = $_SESSION["user"]["id_user"];
     $titleName = $_POST["task_list"];
     $todoController = new TodoController();
-    $todoController->registerlistName($titleName, $id_user);
+    $todoController->ControllerRegisterlistName($titleName, $id_user);
     
 }, "registerMyList" );
 
@@ -93,7 +103,7 @@ $router->map('POST', '/myList/registerTask', function(){
     $listId = $_POST["list_id"];
 
     $authController = new TodoController();
-    $authController->registerTask($task, $listId, $priority);
+    $authController->ControllerRegisterTask($task, $listId, $priority);
     
 }, "registerTask" );
 
@@ -103,37 +113,32 @@ $router->map('POST', '/myList/deleteList', function(){
     $id_list_name = $_POST["id_list_name"];
     
     $todo = new TodoController();
-    $todo->deleteList($id_user, $id_list_name); 
+    $todo->ControllerDeleteList($id_user, $id_list_name); 
 
 }, "deleteList");
 
-
-// $router->map( 'GET', '/myList/displayTodos',function(){
-//     $todoController = new TodoController();
-//     $result = $todoController->controllerDisplayTodos();
-//     echo json_encode($result);
-
-// }, "myListForm");
 
 
 
 $router->map( 'GET', '/myList/getTasks',function(){
     $id_list = $_GET["id_list"];
     $todoController = new TodoController();
-    $resultTask = $todoController->displayTasks($id_list);
+    $resultTask = $todoController->ControllerDisplayTasks($id_list);
     echo json_encode($resultTask);
 
 }, "myListTask");
 
 
 
-// $router->map( 'POST', '/myList/stateDone',function(){
-// var_dump($_POST);
-//     $idTask = $_POST["idTask"];
-//     $authController = new AuthController();
-//     $authController->controlStateDone($idTask);
+$router->map( 'POST', '/myList/updateTask',function(){
 
-// }, "myListstateDone");
+    $state = $_POST["state"];
+    $idTask = $_POST["id_task"];
+
+    $authController = new TodoController();
+    $authController->ControllerUpdateStateTask($idTask, $state);
+
+}, "myLiStstateUpdate");
 
 
 // $router->map( 'POST', '/myList/statePending',function(){
