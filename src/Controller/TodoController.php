@@ -73,6 +73,16 @@ class TodoController{
         $todo = new Todo();
         $todo->deleteList($id_user, $id_list);
     }
+
+    public function ControllerDeleteTask($id_task, $id_list){
+
+        $id_task = htmlspecialchars($id_task);
+        $id_list = htmlspecialchars($id_list);
+
+        $todo = new Todo();
+        $todo->deleteTask($id_task, $id_list);
+
+    }
     
     public function ControllerUpdateStateTask($idTask, $state){
 

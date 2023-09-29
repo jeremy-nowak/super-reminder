@@ -58,15 +58,23 @@ async function addList(form){
 
       let checkbox = document.createElement("input");
       checkbox.setAttribute("type", "checkbox");
+
+      let btn_del_task = document.createElement("button");
+      btn_del_task.setAttribute("data-id", task.id_task);
+      btn_del_task.classList.add("btn_del_task");
+      btn_del_task.textContent = "X";
       
+
 
       div_li.appendChild(taskName);
       div_li.appendChild(checkbox);
+      div_li.appendChild(btn_del_task);
 
       li_task.appendChild(div_li);
       ul_tasks.appendChild(li_task);
-
+// --------------------------------------------------------------------------
       checkbox.addEventListener("click", function(){
+
         if(checkbox.checked){
 
           let data = new FormData();
@@ -89,6 +97,23 @@ async function addList(form){
           })
         }
       })
+
+      btn_del_task.addEventListener("click", function(e){
+        e.preventDefault();
+        
+        let data = new FormData();
+        data.append("id_task", task.id_task);
+        data.append("id_list_name", id_list_name);
+        data.append("delete", "true");
+
+        $request = fetch("myList/deleteTask", {
+          method: "POST",
+          body: data,
+        })
+        getLists();
+      })
+
+
     })
   }
 
@@ -128,7 +153,7 @@ async function addList(form){
         let ul_tasks = document.createElement("div");
         ul_tasks.classList.add("ul_tasks" );
         getTasks(list.id_list_name, ul_tasks);
-        
+
 
         divButton.appendChild(btn_add);
         divButton.appendChild(btn_delete);
