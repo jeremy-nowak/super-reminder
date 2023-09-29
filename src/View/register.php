@@ -10,7 +10,9 @@ require_once "header.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="scripts/scriptRegister.js"></script>
-    <link rel="stylesheet" href="./style/register.css">
+    <link rel="stylesheet" href="./style/style.css">
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" /> 
+
     <title>Register</title>
 </head>
 <body>  
