@@ -12,7 +12,9 @@ require_once "header.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="scripts/scriptProfile.js"></script>
-    <link rel="stylesheet" href="./style/profile.css">
+    <link rel="stylesheet" href="./style/style.css">
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" /> 
+    <script src="./scripts/scriptHeader.js"></script>
     <title>Profile</title>
 </head>
 <body>

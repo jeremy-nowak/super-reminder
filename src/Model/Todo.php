@@ -118,6 +118,28 @@ public function deleteList($id_user, $id_list){
     }
 }
 
+
+
+public function deleteTask($id_task, $id_list){
+
+    var_dump($id_task, $id_list);
+    $delete = "DELETE FROM task WHERE id_task = :id_task AND id_list = :id_list";
+    $delete = $this->bdd->prepare($delete);
+    $delete->execute([
+        ":id_task" => $id_task,
+        ":id_list" => $id_list
+    ]);
+
+    if($delete){
+        echo "true";
+    }
+    else{
+        echo "false";
+    }
+
+
+}
+
 public function updateStateTask($idTask, $state){
 
     $update = "UPDATE task SET state = :state WHERE id_task = :id_task";

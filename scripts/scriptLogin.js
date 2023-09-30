@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // ----------------------------------------------------------------------------------------------
 
     function indexLocation(){
-      window.location = "./"
+      window.location = "./myListCreate"
     }
 
     async function login(login_form) {

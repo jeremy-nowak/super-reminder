@@ -95,6 +95,14 @@ $router->map('POST', '/myList/registerTitle', function(){
     
 }, "registerMyList" );
 
+$router->map( 'POST', '/myList/deleteTask',function(){
+
+    $id_task = $_POST["id_task"];
+    $id_list = $_POST["id_list_name"];
+    $todoController = new TodoController();
+    $todoController->ControllerDeleteTask($id_task, $id_list);
+
+}, "myListTaskDelete");
 
 $router->map('POST', '/myList/registerTask', function(){
 

@@ -1,10 +1,3 @@
-<?php
-require_once "header.php";
-var_dump($_POST);
-var_dump($_SESSION);
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,32 +5,38 @@ var_dump($_SESSION);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="scripts/scriptTodo.js"></script>
-    <link rel="stylesheet" href="style/myListCreate.css">
+    <link rel="stylesheet" href="style/style.css">
+    <script src="./scripts/scriptHeader.js"></script>
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
     <title>myList</title>
 </head>
 
 <body>
-
-    <div class="container" id="container">
-        <div class="gauche" >
+    
+    <div class="giga_container">
+    <?php
+    require_once "header.php";
+    ?>
+    <div class="cloud">
+        <div class="tiny_cloud1"></div>
+        <div class="tiny_cloud2" ></div>
+        <div class="tiny_cloud3" ></div>
+        <div class="tiny_cloud4" ></div>
+        <div class="tiny_cloud5" ></div>
+    </div>
+        <div class="add_list_div">
+        <i class="nes-kirby"></i>
             <form method="post" id="myList_form_title">
-
                 <h1>To do list creation</h1>
                 <label for="task_list">List name</label>
                 <input type="text" class="task_list" name="task_list" id="task_list">
                 <input type="submit" id="submit_form_title" value="Submit">
-                <div id="displayFormTodo"></div>
             </form>
+            <i class="nes-mario"></i>
         </div>
-        <div id="todos" class="todos">
-            <h1>My list</h1>
-        <div id="displayLists"> 
-        </div> 
 
-        <div id="taskDone">
-            <h1>Task done</h1>
-
-        </div>
+        <div>
+                <div id="display_lists" class="display_lists"></div>
         </div>
     </div>
 

@@ -11,8 +11,11 @@ require_once "header.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style/home.css">
+    <link rel="stylesheet" href="./style/style.css">
     <script src="scripts/scriptLogin.js"></script>
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+
+    <script src="./scripts/scriptHeader.js"></script>
     <title>My To do list </title>
 </head>
 
