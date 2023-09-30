@@ -3,6 +3,10 @@ html {
     font-family: 'Press Start 2P', cursive;
 }
 
+.giga_container{
+    background-color: #A1A0FE;
+}
+
 .container{
     display: flex;
     flex-direction: column;
@@ -74,4 +78,40 @@ html {
 
 .title{
     color: white;
+}
+
+.cloud{
+    position: absolute;
+    width: 150px;
+    height: 75px;
+    border-radius: 100px;
+    background-color: white;
+}
+.tiny_cloud1{
+    position: relative;
+    width: 35px;
+    height: 25px;
+    border-radius: 90%;
+    background-color: white;
+    top: -15%;
+    left: 10%;
+}
+
+.tiny_cloud2{
+    position: relative;
+    width: 35px;
+    height: 25px;
+    border-radius: 90%;
+    background-color: white;
+    bottom: 55%;
+    right: 25%;
+}
+.tiny_cloud3{
+    position: relative;
+    width: 50px;
+    height: 45px;
+    border-radius: 90%;
+    background-color: white;
+    top: 25%;
+    right: 30%;
 }

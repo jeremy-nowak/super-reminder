@@ -12,9 +12,18 @@
 </head>
 
 <body>
+    
+    <div class="giga_container">
     <?php
     require_once "header.php";
     ?>
+    <div class="cloud">
+        <div class="tiny_cloud1"></div>
+        <div class="tiny_cloud2" ></div>
+        <div class="tiny_cloud3" ></div>
+        <div class="tiny_cloud4" ></div>
+        <div class="tiny_cloud5" ></div>
+    </div>
         <div class="add_list_div">
         <i class="nes-kirby"></i>
             <form method="post" id="myList_form_title">
@@ -27,9 +36,7 @@
         </div>
 
         <div>
-                <div id="display_lists" class="display_lists">
-
-                </div>
+                <div id="display_lists" class="display_lists"></div>
         </div>
     </div>
 
