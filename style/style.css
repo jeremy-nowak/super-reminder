@@ -12,6 +12,13 @@ html {
     flex-direction: column;
     width: 100%;
     padding-top: 4%;
+    height: 100%;
+    justify-content: center;
+}
+.profile-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .add_list_div{
@@ -28,6 +35,7 @@ html {
     justify-content: center;
     margin-top: 5%;
     grid-gap: 1%;
+    grid-row-gap: 5%;
 }
 .todo_container{
     position: relative;
@@ -49,7 +57,7 @@ html {
 #div_li{
     display: flex;
     flex-direction: row;
-    height: 55px;
+    height: 65px;
     justify-content: space-between;
     margin: 2%;
     align-items: center;
@@ -81,38 +89,99 @@ html {
 }
 
 
-.cloud{
+.cloud {
     position: absolute;
     width: 150px;
     height: 75px;
     border-radius: 100px;
     background-color: white;
+    left: 88%;
+    top: 57px;
 }
+    
+
 .tiny_cloud1{
     position: relative;
-    width: 35px;
-    height: 25px;
-    border-radius: 90%;
-    background-color: white;
-    top: -15%;
-    left: 10%;
+  width: 85px;
+  height: 75px;
+  border-radius: 53%;
+  background-color: white;
+  top: 18%;
+  left: 55%;
+
 }
 
 .tiny_cloud2{
     position: relative;
-    width: 35px;
-    height: 25px;
-    border-radius: 90%;
+    width: 85px;
+    height: 75px;
+    border-radius: 53%;
     background-color: white;
-    bottom: 55%;
-    right: 25%;
+    top: -61%;
+    left: 13%;
+    
 }
 .tiny_cloud3{
     position: relative;
-    width: 50px;
-    height: 45px;
-    border-radius: 90%;
+    width: 85px;
+    height: 75px;
+    border-radius: 53%;
     background-color: white;
-    top: 25%;
-    right: 30%;
+    top: -185%;
+    left: -18%;
 }
+
+.tiny_cloud4{
+    position: relative;
+    width: 70px;
+    height: 60px;
+    border-radius: 53%;
+    background-color: white;
+    top: -330%;
+    left: -2%;
+}
+ 
+.tiny_cloud5{
+    position: relative;
+    width: 85px;
+    height: 75px;
+    border-radius: 53%;
+    background-color: white;
+    top: -419%;
+    left: 26%;
+  
+}
+
+.tiny_cloud6{
+    position: relative;
+    width: 85px;
+    height: 75px;
+    border-radius: 53%;
+    background-color: white;
+    top: -502%;
+    left: 53%;
+} 
+
+.header_container{
+    position: relative;
+    top: 17%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+header{
+    display: flex;
+  position: absolute;
+  top: 4em;
+}
+
+.myList_form_title{
+    margin-top: 4%;
+  margin-left: 7%;
+}
+
+
+
+

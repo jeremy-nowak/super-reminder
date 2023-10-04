@@ -67,7 +67,7 @@ async function addList(form){
 
 
       div_li.appendChild(taskName);
-      div_li.appendChild(checkbox);
+      // div_li.appendChild(checkbox);
       div_li.appendChild(btn_del_task);
 
       li_task.appendChild(div_li);
