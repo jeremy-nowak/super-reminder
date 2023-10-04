@@ -14,6 +14,7 @@ html {
     padding-top: 4%;
     height: 100%;
     justify-content: center;
+    background-color: #A1A0FE;
 }
 .profile-form{
     display: flex;
@@ -182,6 +183,17 @@ header{
   margin-left: 7%;
 }
 
+.home{
+    width: 100%;
+    height: 100%;
+    background-color: #A1A0FE;
+    display: flex;
+    justify-content: center;
+}
+.login-form{
+    display: flex;
+    justify-content: center;
+}
 
 
 
