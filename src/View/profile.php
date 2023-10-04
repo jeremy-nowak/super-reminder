@@ -15,12 +15,11 @@ require_once "header.php";
     <link rel="stylesheet" href="./style/style.css">
     <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" /> 
     <script src="./scripts/scriptHeader.js"></script>
-    <title>Profile</title>
+    <title>Update profile</title>
 </head>
 <body>
     <div class="container">
         <div class="profile-form">
-            <h1 class="title">My Profile</h1>
             <form method="post" id="login_form">
 
                 <div class="field">

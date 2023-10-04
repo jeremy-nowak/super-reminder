@@ -14,6 +14,8 @@
 <body>
     
     <div class="giga_container">
+
+    <div class="header_container">
     <?php
     require_once "header.php";
     ?>
@@ -23,16 +25,20 @@
         <div class="tiny_cloud3" ></div>
         <div class="tiny_cloud4" ></div>
         <div class="tiny_cloud5" ></div>
+        <div class="tiny_cloud6" ></div>
+
     </div>
+    </div>
+
         <div class="add_list_div">
-        <i class="nes-kirby"></i>
-            <form method="post" id="myList_form_title">
-                <h1>To do list creation</h1>
+            <form method="post" id="myList_form_title" class="myList_form_title">
+                <h1><i class="nes-kirby"></i> To do list creation</h1>
                 <label for="task_list">List name</label>
                 <input type="text" class="task_list" name="task_list" id="task_list">
                 <input type="submit" id="submit_form_title" value="Submit">
+                <i class="nes-mario"></i>
             </form>
-            <i class="nes-mario"></i>
+
         </div>
 
         <div>
