@@ -26,30 +26,30 @@ document.addEventListener("DOMContentLoaded", function () {
         login.style.backgroundColor = "red";
         login.style.borderColor = "red";
       } else {
-        login.style.backgroundColor = "#222823";
-        login.style.borderColor = "#222823";
+        login.style.backgroundColor = "#FFFFFF";
+        login.style.borderColor = "#FFFFFF";
 
-      let result = (await response.text()).trim();
-      console.log(result);
-      if (result === "existing") {
-        error_login.innerHTML = "Login unavailable";
-        login.style.borderColor = "red";
-        login.style.backgroundColor = "red";
-      } else if (result === "notexisting") {
-        login.style.borderColor = "#222823";
-        login.style.backgroundColor = "#222823";
-        error_login.innerHTML = "";
-      }}
-
-      let data = new FormData(form_register);
-      data.append("loginCheck", "ok");
-      let response = await fetch("register/verifLog", {
-        method: "POST",
-        body: data,
-      });
-
-    }
-
+        
+        let data = new FormData(form_register);
+        data.append("loginCheck", "ok");
+        let response = await fetch("register/verifLog", {
+          method: "POST",
+          body: data,
+        });
+        
+        let result = (await response.text()).trim();
+        console.log(result);
+        if (result === "existing") {
+          error_login.innerHTML = "Login unavailable";
+          login.style.borderColor = "red";
+          login.style.backgroundColor = "red";
+        } else if (result === "notexisting") {
+          login.style.borderColor = "#FFFFFF";
+          login.style.backgroundColor = "#FFFFFF";
+          error_login.innerHTML = "";
+        }}
+      }
+      
     function password_check(password) {
 
       const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
@@ -62,8 +62,8 @@ document.addEventListener("DOMContentLoaded", function () {
           error_password.innerHTML = "You need to type a password";
         }
         else if(regexPassword.test(passwordValue)){
-          password.style.backgroundColor = "#222823";
-          password.style.borderColor = "#222823";
+          password.style.backgroundColor = "#FFFFFF";
+          password.style.borderColor = "#FFFFFF";
         } 
         else{
           error_password.innerHTML = "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character"
@@ -79,8 +79,8 @@ document.addEventListener("DOMContentLoaded", function () {
         password_conf.style.backgroundColor = "red";
         error_password_conf.innerHTML = "You need to type a password";
       } else {
-        password_conf.style.backgroundColor = "#222823";
-        password_conf.style.borderColor = "#222823";
+        password_conf.style.backgroundColor = "#FFFFFF";
+        password_conf.style.borderColor = "#FFFFFF";
       }
     }
 

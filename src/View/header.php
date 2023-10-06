@@ -1,7 +1,7 @@
 <header id="header">
     <div class="top_nav">
         <div class="headerz" >
-            <ul>
+            <ul class="ul_button">
                 <?php if (!isset($_SESSION['user'])) { ?>
                     <a href="./register"><button type="button" class="nes-btn is-primary">Register</button></a>
                     <a href="./login"><button type="button" class="nes-btn is-success">Login</button></a>

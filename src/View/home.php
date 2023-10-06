@@ -3,7 +3,6 @@ if(!isset($_SESSION)){
     session_start();
 }
 
-require_once "header.php";
 
 ?>
 <!DOCTYPE html>
@@ -20,13 +19,23 @@ require_once "header.php";
 </head>
 
 <body>
-    <div class="home">
-        <?php if (!isset($_SESSION['user']['login'])) { ?>
-            <h1>Welcome to TodoList project</h1>
+    <div class="container">
 
-        <?php } else { ?>
-            <h1><?php echo 'Welcome back&nbsp;' . $_SESSION['user']['login'] ?></h1>
-        <?php } ?>
+            <div class="hcontainer">
+                <?php
+                require_once "header.php";
+                ?>
+            </div>
+
+            <div class="home">
+                <?php if (!isset($_SESSION['user']['login'])) { ?>
+                    <h1>Welcome to TodoList project</h1>
+
+                <?php } else { ?>
+                    <h1><?php echo 'Welcome back&nbsp;' . $_SESSION['user']['login'] ?></h1>
+                <?php } ?>
+            </div>
+
     </div>
 </body>
 </html>

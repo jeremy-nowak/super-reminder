@@ -31,12 +31,22 @@
     </div>
 
         <div class="add_list_div">
+            <div class="gestion_mario">
+
+                <i class="nes-mario"></i>
+            </div>
+
+            <div class="gestion_kirby">
+            <i id="nes-kirby" class="nes-kirby"></i>
+            </div>
+
             <form method="post" id="myList_form_title" class="myList_form_title">
-                <h1><i class="nes-kirby"></i> To do list creation</h1>
+               <h1 id="divH1"> Create your task</h1>
                 <label for="task_list">List name</label>
+                
                 <input type="text" class="task_list" name="task_list" id="task_list">
                 <input type="submit" id="submit_form_title" value="Submit">
-                <i class="nes-mario"></i>
+                
             </form>
 
         </div>

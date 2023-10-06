@@ -6,7 +6,29 @@ html {
 .giga_container{
     background-color: #A1A0FE;
 }
+.register-form{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.login-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
 
+.gestion_kirby{
+position: absolute;
+top: 50px;
+  right: 361px;
+}
+.gestion_mario{
+  position: absolute;
+  top: 50px;
+  left: 555px;
+}
 .container{
     display: flex;
     flex-direction: column;
@@ -37,6 +59,7 @@ html {
     margin-top: 5%;
     grid-gap: 1%;
     grid-row-gap: 5%;
+    grid-column-gap: 2%;
 }
 .todo_container{
     position: relative;
@@ -188,12 +211,422 @@ header{
     height: 100%;
     background-color: #A1A0FE;
     display: flex;
-    justify-content: center;
-}
-.login-form{
-    display: flex;
-    justify-content: center;
+    justify-content: center;  
 }
 
 
 
+/* ------------------------------------------------------------------------------------------------- */
+/* --------------------------------Responsive design debut------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------- */
+
+
+@media screen and (max-width: 767px) {
+
+
+  
+  .giga_container{
+    background-color: #A1A0FE;
+  }
+  .display_lists{
+    display: grid;
+    grid-template-columns: repeat(1, 387px);
+    grid-template-rows: repeat(16, 1053px);
+    justify-content: center;
+    margin-top: 31%;
+    grid-gap: 1%;
+    grid-row-gap: 1%;
+    grid-column-gap: 150px;
+  }
+  .gestion_mario{
+    position: absolute;
+    left: 175px;
+    top: 257px;
+}
+
+.gestion_kirby{
+  position: absolute;
+  right: 22px;
+  top: 120px;
+
+}
+  
+
+  .ul_button {
+    width: 100%;
+  }
+  .myList_form_title {
+    margin-top: 45%;
+    width: 84%;
+  }
+  .divTuyaux {
+    position: absolute;
+    top: -6%;
+    width: 420px;
+    height: 80px;
+    border: solid;
+    padding: 0 100px;
+    background: rgb(3,144,0);
+    background: linear-gradient(90deg, rgba(3,144,0,1) 9%, rgba(255,255,255,1) 24%, rgba(3,144,0,1) 40%);
+    border-radius: 10px;
+    box-shadow: 0px 12px 20px -1px rgba(0,0,0,0.49);
+  }
+
+  .cloud {
+    position: absolute;
+    width: 150px;
+    height: 75px;
+    border-radius: 100px;
+    background-color: white;
+    left: 71%;
+    top: -25px;
+  }
+
+  /* .nes-kirby{ */
+    /* displayed none kirby via JS because of the library */
+  /* } */
+
+}
+
+@media screen and (width: 810px) {
+  .giga_container{
+    background-color: #A1A0FE;
+  }
+.display_lists {
+  grid-template-columns: repeat(1, 693px);
+  grid-template-rows: repeat(10, 800px);
+  justify-content: center;
+  margin-top: 12%;
+  grid-gap: 1%;
+  grid-row-gap: 5%;
+  grid-column-gap: 7%;
+}
+
+  .divTuyaux {
+    position: absolute;
+    top: -12%;
+    width: 787px;
+    height: 100px;
+    border: solid;
+    padding: 0 100px;
+    background: rgb(3,144,0);
+    background: linear-gradient(90deg, rgba(3,144,0,1) 9%, rgba(255,255,255,1) 24%, rgba(3,144,0,1) 40%);
+    border-radius: 10px;
+    box-shadow: 0px 12px 20px -1px rgba(0,0,0,0.49);
+  }
+
+.myList_form_title {
+  margin-top: 9%;
+  margin-left: 0%;
+  }
+  .ul_button {
+    width: 100%;
+  }
+
+}
+
+
+    @media screen and (min-width: 600px) and (max-width: 876px) {
+
+      .giga_container{
+        background-color: #A1A0FE;
+      }
+      .display_lists {
+        grid-template-columns: repeat(1, 693px);
+        grid-template-rows: repeat(10, 800px);
+        justify-content: center;
+        margin-top: 12%;
+        grid-gap: 1%;
+        grid-row-gap: 5%;
+        grid-column-gap: 7%;
+      }
+    
+        .divTuyaux {
+          position: absolute;
+          top: -12%;
+          width: 787px;
+          height: 100px;
+          border: solid;
+          padding: 0 100px;
+          background: rgb(3,144,0);
+          background: linear-gradient(90deg, rgba(3,144,0,1) 9%, rgba(255,255,255,1) 24%, rgba(3,144,0,1) 40%);
+          border-radius: 10px;
+          box-shadow: 0px 12px 20px -1px rgba(0,0,0,0.49);
+        }
+      
+      .myList_form_title {
+        margin-top: 9%;
+        margin-left: 0%;
+        }
+        .ul_button {
+          width: 100%;
+        }
+    }
+
+
+    @media screen and (min-width: 877px) and (max-width: 988px) {
+
+      .giga_container{
+        background-color: #A1A0FE;
+      }
+      .display_lists {
+        grid-template-columns: repeat(1, 743px);
+        grid-template-rows: repeat(10, 800px);
+        justify-content: center;
+        margin-top: 12%;
+        grid-gap: 1%;
+        grid-row-gap: 5%;
+        grid-column-gap: 7%;
+      }
+    
+        .divTuyaux {
+          position: absolute;
+          top: -12%;
+          width: 851px;
+          height: 100px;
+          border: solid;
+          padding: 0 100px;
+          background: rgb(3,144,0);
+          background: linear-gradient(90deg, rgba(3,144,0,1) 9%, rgba(255,255,255,1) 24%, rgba(3,144,0,1) 40%);
+          border-radius: 10px;
+          box-shadow: 0px 12px 20px -1px rgba(0,0,0,0.49);
+        }
+      
+      .myList_form_title {
+        margin-top: 9%;
+        margin-left: 0%;
+        }
+        .ul_button {
+          width: 100%;
+        }
+    }
+
+
+    @media screen and (min-width: 989px) and (max-width: 1100px) {
+
+        .giga_container{
+          background-color: #A1A0FE;
+        }
+        .display_lists {
+          grid-template-columns: repeat(1, 806px);
+          grid-template-rows: repeat(10, 800px);
+            justify-content: center;
+            margin-top: 12%;
+            grid-gap: 1%;
+            grid-row-gap: 5%;
+            grid-column-gap: 7%;
+          }
+          .divTuyaux {
+            position: absolute;
+            top: -12%;
+            width: 925px;
+            height: 100px;
+            border: solid;
+            padding: 0 100px;
+            background: rgb(3,144,0);
+            background: linear-gradient(90deg, rgba(3,144,0,1) 9%, rgba(255,255,255,1) 24%, rgba(3,144,0,1) 40%);
+            border-radius: 10px;
+            box-shadow: 0px 12px 20px -1px rgba(0,0,0,0.49);
+          }
+        
+        .myList_form_title {
+          margin-top: 9%;
+          margin-left: 0%;
+          }
+          .ul_button {
+            width: 100%;
+          }
+      }
+
+
+    @media screen and (min-width: 1100px) and (max-width: 1315px) {
+
+        .giga_container{
+          background-color: #A1A0FE;
+        }
+        .display_lists {
+            grid-template-columns: repeat(1, 806px);
+            grid-template-rows: repeat(10, 800px);
+            justify-content: center;
+            margin-top: 12%;
+            grid-gap: 1%;
+            grid-row-gap: 5%;
+            grid-column-gap: 7%;
+          }
+          .divTuyaux {
+            position: absolute;
+            top: -12%;
+            width: 925px;
+            height: 100px;
+            border: solid;
+            padding: 0 100px;
+            background: rgb(3,144,0);
+            background: linear-gradient(90deg, rgba(3,144,0,1) 9%, rgba(255,255,255,1) 24%, rgba(3,144,0,1) 40%);
+            border-radius: 10px;
+            box-shadow: 0px 12px 20px -1px rgba(0,0,0,0.49);
+          }
+        
+        .myList_form_title {
+          margin-top: 10%;
+          margin-left: 0%;
+          }
+          .ul_button {
+            width: 100%;
+          }
+
+          .gestion_mario{
+            position: absolute;
+            top: 170px;
+            left: 277px;
+        }
+        .gestion_kirby {
+          position: absolute;
+          top: 175px;
+          right: 250px;
+        }
+      }
+
+
+    @media screen and (min-width:1316px ) and (max-width: 1454px) {
+
+        .giga_container{
+          background-color: #A1A0FE;
+        }
+        .display_lists {
+            grid-template-columns: repeat(2, 549px);
+            grid-template-rows: repeat(6, 800px);
+            justify-content: center;
+            margin-top: 17%;
+            grid-gap: 1%;
+            grid-row-gap: 5%;
+            grid-column-gap: 7%;
+          }
+          .divTuyaux {
+            position: absolute;
+            top: -8%;
+            width: 634px;
+            height: 80px;
+            border: solid;
+            padding: 0 100px;
+            background: rgb(3,144,0);
+            background: linear-gradient(90deg, rgba(3,144,0,1) 9%, rgba(255,255,255,1) 24%, rgba(3,144,0,1) 40%);
+            border-radius: 10px;
+            box-shadow: 0px 12px 20px -1px rgba(0,0,0,0.49);
+          }
+        
+          .myList_form_title {
+            margin-top: 14%;
+            margin-left: 0%;
+          }
+          .ul_button{
+            width: 72%;
+          }
+
+          .gestion_mario{
+            position: absolute;
+            top: 370px;
+            left: 277px;
+        }
+        .gestion_kirby {
+          position: absolute;
+          top: 375px;
+          right: 250px;
+        }
+
+
+      }
+    
+    
+    @media screen and (min-width: 1455px) and (max-width: 1602px) {
+
+        .giga_container{
+          background-color: #A1A0FE;
+        }
+        .display_lists{
+            grid-template-columns: repeat(3, 400px);
+            grid-template-rows: repeat(4, 800px);
+            justify-content: center;
+            margin-top: 7%;
+            grid-gap: 1%;
+            grid-row-gap: 5%;
+            grid-column-gap: 7%;
+        }
+        .myList_form_title {
+            margin-top: 4%;
+            margin-left: 15%;
+          }
+          .ul_button{
+            width: 90%;
+          }
+
+          .gestion_mario{
+            position: absolute;
+            top: 50px;
+            left: 419px;
+        }
+        .gestion_kirby {
+          position: absolute;
+          top: 50px;
+          right: 219px;
+        }
+      }
+
+      @media screen and (min-width: 1603px) and (max-width: 1762px) {
+        /* Styles pour les tablettes */
+        .display_lists{
+  
+            grid-template-columns: repeat(3, 400px);
+            grid-template-rows: repeat(3, 800px);
+            justify-content: center;
+            margin-top: 7%;
+            grid-gap: 1%;
+            grid-row-gap: 5%;
+            grid-column-gap: 7%;
+  
+        }
+
+        .myList_form_title {
+            margin-top: 4%;
+            margin-left: 12%;
+          }
+
+        .giga_container{
+          background-color: #A1A0FE;
+      }
+      .ul_button{
+        width: 94%;
+      }
+        .gestion_mario{
+            position: absolute;
+            top: 50px;
+            left: 419px;
+        }
+        .gestion_kirby {
+          position: absolute;
+          top: 50px;
+          right: 249px;
+        }
+
+  
+  
+      }
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+/* ------------------------------------------------------------------------------------------------- */
+/* --------------------------------Responsive design debut------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------- */

@@ -22,8 +22,8 @@ document.addEventListener("DOMContentLoaded", function () {
           login_profile.style.backgroundColor = "red";
           login_profile.style.borderColor = "red";
         } else {
-          login_profile.style.backgroundColor = "#222823";
-          login_profile.style.borderColor = "#222823";
+          login_profile.style.backgroundColor = "#FFFFFF";
+          login_profile.style.borderColor = "#FFFFFF";
         }
   
         let data = new FormData(login_form);
@@ -41,8 +41,8 @@ document.addEventListener("DOMContentLoaded", function () {
           login_profile.style.borderColor = "red";
           login_profile.style.backgroundColor = "red";
         } else if (result === "notexisting") {
-          login_profile.style.borderColor = "#222823";
-          login_profile.style.backgroundColor = "#222823";
+          login_profile.style.borderColor = "#FFFFFF";
+          login_profile.style.backgroundColor = "#FFFFFF";
           error_profile.innerHTML = "";
         }
       }
@@ -56,8 +56,8 @@ document.addEventListener("DOMContentLoaded", function () {
           password_profile_conf.style.borderColor = "red";
         }
         else{
-          password_profile_conf.style.backgroundColor = "#222823";
-          password_profile_conf.style.borderColor = "#222823";
+          password_profile_conf.style.backgroundColor = "#FFFFFF";
+          password_profile_conf.style.borderColor = "#FFFFFF";
         }
       }
 
@@ -74,11 +74,11 @@ document.addEventListener("DOMContentLoaded", function () {
             error_password.innerHTML = "You need to type a password";
           }
           else{
-            password_profile.style.backgroundColor = "#222823";
-            password_profile.style.borderColor = "#222823"; 
+            password_profile.style.backgroundColor = "#FFFFFF";
+            password_profile.style.borderColor = "#FFFFFF"; 
             if(regexPassword.test(passwordValue)){
-              password_profile.style.backgroundColor = "#222823";
-              password_profile.style.borderColor = "#222823";
+              password_profile.style.backgroundColor = "#FFFFFF";
+              password_profile.style.borderColor = "#FFFFFF";
             } 
             else{
               error_password.innerHTML = "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character:"

@@ -21,8 +21,8 @@ document.addEventListener("DOMContentLoaded", function () {
         login_login.style.backgroundColor = "red";
         login_login.style.borderColor = "red";
       } else {
-        login_login.style.backgroundColor = "#222823";
-        login_login.style.borderColor = "#222823";
+        login_login.style.backgroundColor = "#FFFFFF";
+        login_login.style.borderColor = "#FFFFFF";
       }
 
       let data = new FormData(form_register);
@@ -36,8 +36,8 @@ document.addEventListener("DOMContentLoaded", function () {
         login_login.style.borderColor = "red";
         login_login.style.backgroundColor = "red";
       } else if (result === "notexisting") {
-        login_login.style.borderColor = "#222823";
-        login_login.style.backgroundColor = "#222823";
+        login_login.style.borderColor = "#FFFFFF";
+        login_login.style.backgroundColor = "#FFFFFF";
         error_login.innerHTML = "";
       }
     }

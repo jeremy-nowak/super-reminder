@@ -214,3 +214,57 @@ myList_form_title.addEventListener("submit", function(e){
     addList(myList_form_title);
 })
 
+
+
+
+// --------------------Responsive ici a cause d'utilisation d'une bibliotheque---------
+
+
+// window.addEventListener('resize', function () {
+//   if (window.innerWidth <= 1560) {
+//       // Si la largeur de l'écran est supérieure ou égale à 1560 pixels, masquer l'élément
+//       var nesKirby = document.getElementById('nes-kirby');
+//       if (nesKirby) {
+//           nesKirby.style.display = 'none';
+//       }
+//   } else {
+//       // Si la largeur de l'écran est inférieure à 1560 pixels, réafficher l'élément
+//       var nesKirby = document.getElementById('nes-kirby');
+//       if (nesKirby) {
+//           nesKirby.style.display = 'block'; // Ou 'block' selon le contexte
+//       }
+//   }
+// });
+
+window.addEventListener('resize', function () {
+  if (window.innerWidth <= 600) {
+      // Si la largeur de l'écran est supérieure ou égale à 1560 pixels, masquer l'élément
+      var nesMario = document.getElementById('nes-mario');
+      if (nesMario) {
+          nesMario.style.display = 'none';
+      }
+  } else {
+      // Si la largeur de l'écran est inférieure à 1560 pixels, réafficher l'élément
+      var nesMario = document.getElementById('nes-mario');
+      if (nesMario) {
+          nesKirby.style.display = 'block'; // Ou 'block' selon le contexte
+      }
+  }
+});
+
+window.addEventListener('resize', function () {
+  if (window.innerWidth <= 1150) {
+      // Si la largeur de l'écran est supérieure ou égale à 1560 pixels, masquer l'élément
+      var divH1 = document.getElementById('divH1');
+      if (divH1) {
+          divH1.style.display = 'none';
+      }
+  } else {
+      // Si la largeur de l'écran est inférieure à 1560 pixels, réafficher l'élément
+      var divH1 = document.getElementById('divH1');
+      if (divH1) {
+          divH1.style.display = 'block'; // Ou 'block' selon le contexte
+      }
+  }
+});
+
